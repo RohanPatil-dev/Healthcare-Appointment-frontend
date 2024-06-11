@@ -1,0 +1,143 @@
+.navbar{
+    background-color: #007aa5;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.Logo_name{
+    font-size: 30px;
+}
+
+.link-name{
+    font-size: 20px;
+    font-style: oblique;
+}
+
+.link-name:hover{
+    background-color: red;
+    border-radius: 30px;
+}
+
+.nav-inner-container{
+    margin-left: 480px;
+}
+
+.img{
+    position: relative;
+    left: 40px;
+    height: 70px;
+    width: 70px;
+}
+
+/* doctor registration */
+
+.doc-registrastion{
+    margin-top: 50px;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.form-check-input_1,.form-check-input_2{
+    accent-color: rgba(30, 163, 30, 0.598);
+    width: 20px;
+    height: 20px;
+}
+
+.form-check-input_2{
+    margin-left: 30px;
+}
+
+.selection-btn{
+    margin-left: 430px;
+}
+
+.doc-gridy{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px 20px;
+}
+
+.doc-btn{
+    margin-top: 50px;
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 12px;
+    margin-left: 455px;
+    color: #007aa5;
+    box-shadow: 0px 5px 7px 5px rgb(201, 141, 141);
+    margin-bottom: 50px;
+}
+
+
+/* login */
+
+.doc-log-gridy{
+    margin-left: 360px;
+}
+
+.doc-log-gridy .form-group input {
+   width: 400px;
+}
+
+.doc-log-gridy label{
+     font-size: 20px;
+     font-weight: 600;
+}
+
+.doc-log{
+    margin-top: 100px;
+}
+
+/* patient-dashboard */
+.patient-dashboard{
+    margin-top: 100px;
+}
+
+.patient-btn-div{
+    position: relative;
+    top: 60px;
+    left: 280px;
+}
+
+.patient-btn{
+    height: 50px;
+    width: 150px;
+    box-shadow: 0px 6px 4px 3px gray;
+    background-color: rgb(203, 37, 37);
+    font-size: 20px;
+    color: white;
+}
+
+/* modal */
+
+.modal-body{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px 30px;
+}
+
+.select{
+    margin-left: 20px;
+}
+
+td,th{
+  font-size: 25px;
+}
+
+
+.action{
+    box-shadow: 0px 2px 8px 5px gray;
+    font-size: 20px;
+}
+
+
+.heading{
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+    font-style: italic;
+    color: red;
+    text-shadow: 5px 7px 7px rgb(76, 76, 212);
+}

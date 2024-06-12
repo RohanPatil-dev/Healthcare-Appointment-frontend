@@ -24,7 +24,7 @@ export default function Patient_dashboard() {
 
   const[doctorId,setDoctorId] = useState(null)
 
-  const[date,setDate] = useState(null)
+  const[date,setDate] = useState("")
 
   const patient = useLocation().state?.id
 
@@ -54,19 +54,21 @@ export default function Patient_dashboard() {
      })
  }
 
+ function postAppointment(){
  const data = {
   doctor_id : doctorId,
   patient_id : patient,
   date : date,
-  status : "Pending"
+  status : "pending"
 }
 
- function postAppointment(){
-    axios.post("http://localhost:8081/appointment/userAppointment",data).then((data)=>{
+  axios.post("http://localhost:8081/appointment/userAppointment",data).then((data)=>{
           console.log(data);
+          console.log("success");
           addAppointment()
     }).catch((err)=>{
        console.log(err);
+       console.log("err");
     })
   
     
@@ -76,11 +78,13 @@ export default function Patient_dashboard() {
  function doctorById(doctor_id){ 
    const id = doctors.find((value)=>{return value._id === doctor_id})
 
-   if(id){
-    return id.name
-   }else{
-     return "Doctor"
-   }
+   return id
+
+  //  if(id){
+  //   return id.name
+  //  }else{
+  //    return "Doctor"
+  //  }
  }
 
 
@@ -94,7 +98,7 @@ export default function Patient_dashboard() {
 
   return (
     <>
-      <Modal btn={postAppointment()} doctors={doctors} date={date} setDate={setDate} />
+      <Modal btn={postAppointment} doctors={doctors} date={date} setDate={setDate} doctorId={doctorId} setDoctorId={setDoctorId} />
 
       <Nav_dashboard />
 
@@ -107,8 +111,7 @@ export default function Patient_dashboard() {
           <thead>
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Patient ID</th>
-              <th scope="col">Doctor ID</th>
+              <th scope="col">Doctor Name</th>
               <th scope="col">Date</th>
               <th scope="col">Status</th>
               <th scope="col">Actions</th>
@@ -120,8 +123,8 @@ export default function Patient_dashboard() {
               <>
                  <tr key={index+1}>
                     <td>{index+1}</td>
-                    <td>{data.patientId}</td>
-                    <td>{doctorById(data._id)}</td>
+                    {/* <td>{doctorById(data._id)}</td> */}
+                    <td>{data.doctorId}</td>
                     <td>{data.date}</td>
                     <td>{data.status}</td>
                     <td><button className="delete-btn" onClick={()=>{deleteAppointment(data._id)}}>Delete</button></td>

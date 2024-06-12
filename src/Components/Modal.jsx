@@ -21,7 +21,7 @@ export default function Modal(props) {
             </div>
             <div className="modal-body">
               <div>
-                <Select style={{ width: 200 }} className="select" placeholder="Select an Option.....">
+                <Select style={{ width: 200 }} className="select" value={props.doctorId} onChange={(value)=>{return props.setDoctorId(value)}} placeholder="Select an Option.....">
 
                   {doctors.map((data,index)=>{
                      return(
@@ -41,7 +41,7 @@ export default function Modal(props) {
                <input type="date" name="date" id="" value={props.date} onChange={(event)=>{return props.setDate(event.target.value)}}/>
 
               <div>
-                <button className="btn btn-primary" onClick={()=>{props.postAppointment()}}>Submit</button>
+                <button className="btn btn-primary" onClick={()=>{props.btn()}}>Submit</button>
               </div>
             </div>
           </div>

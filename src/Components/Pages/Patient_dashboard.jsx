@@ -74,20 +74,6 @@ export default function Patient_dashboard() {
     
  }
 
-
- function doctorById(doctor_id){ 
-   const id = doctors.find((value)=>{return value._id === doctor_id})
-
-   return id
-
-  //  if(id){
-  //   return id.name
-  //  }else{
-  //    return "Doctor"
-  //  }
- }
-
-
  function deleteAppointment(id){
     axios.delete(`http://localhost:8081/appointment/userAppointment/${id}`).then((value)=>{
        console.log(`${id} : data deleted successfully`);

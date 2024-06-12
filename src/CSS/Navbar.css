@@ -142,3 +142,20 @@ td,th{
     color: red;
     text-shadow: 5px 7px 7px rgb(76, 76, 212);
 }
+
+/* nav dashboard */
+
+.link-value{
+   margin-left: 66rem;
+}
+
+
+/* delete btn */
+
+.delete-btn{
+    background-color: #007aa5;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 6px 6px 4px white;
+    border: none;
+}

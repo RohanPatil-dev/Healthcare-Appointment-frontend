@@ -1,12 +1,13 @@
 import React from "react"
 import Doctor_Modal from "./Doctor_Modal"
+import Nav_dashboard from "./Nav_dashboard"
 
 export default function Doctor_dashboard() {
     return (
         <>
-
         <Doctor_Modal/>
         
+        <Nav_dashboard />
             <div className="container patient-dashboard text-center">
                 <table class="table table-dark ">
                     <thead>

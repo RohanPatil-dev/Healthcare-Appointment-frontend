@@ -3,33 +3,45 @@ import React from "react"
 import { Select } from "antd"
 const { Option } = Select;
 
-export default function Modal() {
+export default function Modal(props) {
+
+  let doctors = props.doctors
+
   return (
     <>
       {/* Modal  */}
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel" style={{marginLeft : "150px",fontWeight : "bold"}}>Appointment</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h3 className="modal-title" id="exampleModalLabel" style={{marginLeft : "150px",fontWeight : "bold"}}>Appointment</h3>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <div>
                 <Select style={{ width: 200 }} className="select" placeholder="Select an Option.....">
 
-                  <Option value="">Doc 1</Option>
+                  {doctors.map((data,index)=>{
+                     return(
+                      <>
+                         <Option key={index+1} value={data._id}>{data.name}</Option>
+                      </>
+                     )
+                  })}
+{/*                  
                   <Option value="">Doc 2</Option>
                   <Option value="">Doc 3</Option>
                   <Option value="">Doc 4</Option>
-                  <Option value="">Doc 5</Option>
+                  <Option value="">Doc 5</Option> */}
                 </Select>
               </div>
 
+               <input type="date" name="date" id="" value={props.date} onChange={(event)=>{return props.setDate(event.target.value)}}/>
+
               <div>
-                <button className="btn btn-primary">Submit</button>
+                <button className="btn btn-primary" onClick={()=>{props.postAppointment()}}>Submit</button>
               </div>
             </div>
           </div>

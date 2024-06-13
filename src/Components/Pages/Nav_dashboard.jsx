@@ -9,7 +9,7 @@ export default function Nav_dashboard() {
     const auth = localStorage.getItem("uid")
 
     const logout = () =>{
-        localStorage.clear("uid")
+        localStorage.removeItem("uid")
 
         navigate("/")
     }

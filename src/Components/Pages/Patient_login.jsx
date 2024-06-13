@@ -8,7 +8,7 @@ export default function Patient_login() {
 
   const navigate = useNavigate();
 
-  const [ email, setEmail] = useState("")
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const data = {
@@ -16,9 +16,10 @@ export default function Patient_login() {
     password: password
   }
 
+
   function signinData() {
     const result = axios.post("http://localhost:8081/user/login", data).then(data => 
-                                          { localStorage.setItem("uid",JSON.stringify(data),
+                                          { localStorage.setItem("uid",JSON.stringify(data.data.msg),
                                             console.log(data))          
                                           }).catch((err) => {
                                              console.log(err);

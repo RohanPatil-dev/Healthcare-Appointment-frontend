@@ -18,69 +18,84 @@ export default function Patient_dashboard() {
 
   console.log(location);
 
-  const[appointment,setAppointment] = useState([])
+  const [appointment, setAppointment] = useState([])
 
-  const[doctors,setDoctors] = useState([])
+  console.log("appointment",appointment);
 
-  const[doctorId,setDoctorId] = useState(null)
+  const [doctors, setDoctors] = useState([])
 
-  const[date,setDate] = useState("")
+  const [doctorId, setDoctorId] = useState(null)
 
-  const patient = useLocation().state?.id
+  const [date, setDate] = useState("")
 
+  // const patient = useLocation().state?.id
 
- useEffect(()=>{
-     addAppointment()
-     addDoctors()
- },[patient])
+  const local = JSON.parse(localStorage.getItem("uid"))
 
+  console.log("local",local._id);
 
- function addAppointment(){
-        axios.get(`http://localhost:8081/appointment/userAppointment?patiendId=${patient}`).then((value)=>{
-           console.log("appointment",value.data);
-          setAppointment(value.data)
-        }).catch((err)=>{
-          console.log(err);
-        })
- }
+  useEffect(() => {
+    addAppointment()
+    addDoctors()
+  }, [local._id])
 
 
- function addDoctors(){
-     axios.get(`http://localhost:8081/doctor/docData`).then((value)=>{
-      console.log("doctor",value.data);
-         return setDoctors(value.data)
-     }).catch((err)=>{
-       return err
-     })
- }
+  function addAppointment() {
+    // http://localhost:8081/appointment/appointmentsByPatient?patientId=6666c50eaa856f76ffcdae19
+    axios
+      .get(`http://localhost:8081/appointment/appointmentsByPatient?patientId=${local._id}`)
+      .then((response) => {
+        setAppointment(response.data.task);
+      }).catch(err => console.log(err))
+  }
 
- function postAppointment(){
- const data = {
-  doctor_id : doctorId,
-  patient_id : patient,
-  date : date,
-  status : "pending"
-}
 
-  axios.post("http://localhost:8081/appointment/userAppointment",data).then((data)=>{
-          console.log(data);
-          console.log("success");
-          addAppointment()
-    }).catch((err)=>{
-       console.log(err);
-       console.log("err");
+  //  function addAppointment(){
+  //         axios.get(`http://localhost:8081/appointment/userAppointment`).then((value)=>{
+  //            console.log("appointment",value.data);
+  //           setAppointment(value.data)
+  //         }).catch((err)=>{
+  //           console.log(err);
+  //         })
+  //  }
+
+
+  function addDoctors() {
+    axios.get(`http://localhost:8081/doctor/docData`).then((value) => {
+      console.log("doctor", value.data);
+      return setDoctors(value.data)
+    }).catch((err) => {
+      return err
     })
-  
-    
- }
+  }
 
- function deleteAppointment(id){
-    axios.delete(`http://localhost:8081/appointment/userAppointment/${id}`).then((value)=>{
-       console.log(`${id} : data deleted successfully`);
-    }).catch((err)=>{
-       console.log(err);
+  function postAppointment() {
+    const data = {
+      doctor_id: doctorId,
+      patient_id: local._id,
+      date: date,
+      status: "pending"
+    }
+
+    axios.post("http://localhost:8081/appointment/userAppointment", data).then((data) => {
+      console.log(data);
+      console.log("success");
+      addAppointment()
+    }).catch((err) => {
+      console.log(err);
+      console.log("err");
     })
- }
+
+
+  }
+
+  function deleteAppointment(id) {
+    axios.delete(`http://localhost:8081/appointment/userAppointmentDelete/${id}`).then((value) => {
+      console.log(`${id} : data deleted successfully`);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
 
   return (
     <>
@@ -104,20 +119,19 @@ export default function Patient_dashboard() {
             </tr>
           </thead>
           <tbody>
-           {appointment.map((data,index)=>{
-             return(
-              <>
-                 <tr key={index+1}>
-                    <td>{index+1}</td>
-                    {/* <td>{doctorById(data._id)}</td> */}
+            {appointment.map((data, index) => {
+              return (
+                <>
+                  <tr key={index + 1}>
+                    <td>{index + 1}</td>
                     <td>{data.doctorId}</td>
                     <td>{data.date}</td>
                     <td>{data.status}</td>
-                    <td><button className="delete-btn" onClick={()=>{deleteAppointment(data._id)}}>Delete</button></td>
-                 </tr>
-              </>
-             )
-           })}
+                    <td><button className="delete-btn" onClick={() => { deleteAppointment(data._id) }}>Delete</button></td>
+                  </tr>
+                </>
+              )
+            })}
           </tbody>
         </table>
       </div>

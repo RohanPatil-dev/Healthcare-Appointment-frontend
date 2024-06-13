@@ -16,7 +16,7 @@ export default function Doctor_dashboard() {
 
     const [users, setUsers] = useState([])
 
-    const [status, setStatus] = useState("")
+    const [status, setStatus] = useState(appointments.status)
 
     const { user, id } = useLocation()
 
@@ -47,15 +47,13 @@ export default function Doctor_dashboard() {
     function updateStatus(id, status) {
         const result = axios.put(`http://localhost:8081/appointment/userAppointment/${appointments._id}`, { status })
 
-        setAppointments(appointments.map((data) => data._id == id ? { ...appointments, status: result.data.status } : appointments)).catch((err) => {
-            console.log(err);
-        })
+        setAppointments(appointments.map((data) => data._id === id ? { ...appointments,status:  result.data.status } : appointments))
     }
 
 
     return (
         <>
-            <Doctor_Modal updateStatus={updateStatus} />
+            <Doctor_Modal updateStatus={updateStatus} status={status} setStatus={setStatus} />
 
             <Nav_dashboard />
             <div className="container patient-dashboard text-center">
@@ -71,12 +69,12 @@ export default function Doctor_dashboard() {
                     </thead>
                     <tbody>
 
-                        {appointments.map((data, index) => {
+                        {appointments && appointments.map((data, index) => {
                             return (
                                 <>
                                     <tr key={index + 1}>
                                         <th scope="row">{index + 1}</th>
-                                        <th scope="row">{data._id}</th>
+                                        <th scope="row">{data.patientId}</th>
                                         <td className="doc">{data.date}</td>
                                         <td className="doc">{data.status}</td>
                                         <td><button className="btn btn-primary action" data-toggle="modal" data-target="#doctorModal">Status</button></td>

@@ -14,15 +14,20 @@ export default function Doctor_dashboard() {
 
     const [appointments, setAppointments] = useState([])
 
+    console.log("appointments", appointments);
+
+    // selectedAppointment
     const [users, setUsers] = useState([])
 
-    const [status, setStatus] = useState(appointments.status)
+    console.log("users",users);
 
-    const { user, id } = useLocation()
+    const [status, setStatus] = useState(users.status)
+
+    console.log("status", status);
 
     const local = JSON.parse(localStorage.getItem("uid"))
 
-    console.log("local",local._id);
+    console.log("local", local._id);
 
     useEffect(() => {
         allData()
@@ -33,12 +38,12 @@ export default function Doctor_dashboard() {
     function allData() {
         // http://localhost:8081/appointment/appointmentsByPatient?patientId=6666c50eaa856f76ffcdae19
         axios
-          .get(`http://localhost:8081/appointment/appointmentsByDoctor?doctorId=${local._id}`)
-          .then((response) => {
-            setAppointments(response.data.task);
-          }).catch(err => console.log(err))
-      }
-    
+            .get(`http://localhost:8081/appointment/appointmentsByDoctor?doctorId=${local._id}`)
+            .then((response) => {
+                setAppointments(response.data.task);
+            }).catch(err => console.log(err))
+    }
+
 
     // function allData() {
     //     axios.get("http://localhost:8081/appointment/userAppointment", { params: { doctor: id } }).then((value) => {
@@ -58,16 +63,32 @@ export default function Doctor_dashboard() {
     }
 
 
-    // function updateStatus(id, status) {
-    //     const result = axios.put(`http://localhost:8081/appointment/userAppointment/${appointments._id}`, { status })
+    function getDoctor(id) {
+        var getDocId = id
 
-    //     setAppointments(appointments.map((data) => data._id === id ? { ...appointments,status:  result.data.status } : appointments))
-    // }
+        setUsers(getDocId)
+        console.log("getDocId",getDocId);
+    }
+
+
+    function updateStatus() {
+        const result = axios.put(`http://localhost:8081/appointment/userAppointmentUpdate/${users._id}`, { status }).then((value)=>{
+                
+            console.log("result",value.data);
+            console.log("res",result.data);
+
+            console.log("success");
+
+           
+
+             allData()
+        })
+    }
 
 
     return (
         <>
-            <Doctor_Modal  status={status} setStatus={setStatus} />
+            <Doctor_Modal users={users} updateStatus={updateStatus} status={status} setStatus={setStatus} />
 
             <Nav_dashboard />
             <div className="container patient-dashboard text-center">
@@ -91,7 +112,7 @@ export default function Doctor_dashboard() {
                                         <th scope="row">{data.patientId}</th>
                                         <td className="doc">{data.date}</td>
                                         <td className="doc">{data.status}</td>
-                                        <td><button className="btn btn-primary action" data-toggle="modal" data-target="#doctorModal">Status</button></td>
+                                        <td><button className="btn btn-primary action" onClick={()=>{getDoctor(data)}} data-toggle="modal" data-target="#doctorModal">Status</button></td>
                                     </tr>
                                 </>
                             )

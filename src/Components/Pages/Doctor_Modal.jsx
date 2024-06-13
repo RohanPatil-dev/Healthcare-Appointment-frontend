@@ -22,14 +22,14 @@ export default function Doctor_Modal(props) {
                         <div className="modal-body">
                             <div>
                                 <select style={{ width: 200 }} value={props.status} onChange={(event)=>{props.setStatus(event.target.value)}} placeholder="Select status" className="select">
-                                    <option>Pending</option>
-                                    <option>Confirm</option>
-                                    <option>Cancel</option>
+                                    <option value={"pending"}>Pending</option>
+                                    <option value={"confirm"}>Confirm</option>
+                                    <option value={"cancel"}>Cancel</option>
                                 </select>
                             </div>
 
                             <div>
-                                <button className="btn btn-primary" onClick={() => { props.updateStatus() }}>Update Status</button>
+                                <button className="btn btn-primary" onClick={() => { props.updateStatus()}}>Update Status</button>
                             </div>
                         </div>
                     </div>

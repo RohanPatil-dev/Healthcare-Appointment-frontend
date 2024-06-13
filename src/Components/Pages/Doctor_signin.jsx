@@ -18,7 +18,7 @@ export default function Doctor_signin() {
 
   function signinData() {
     const result = axios.post("http://localhost:8081/doctor/docLogin", data).then(data => 
-                                          { localStorage.setItem("uid",JSON.stringify(data))          
+                                          { localStorage.setItem("uid",JSON.stringify(data.data.msg))          
                                           }).catch((err) => {
                                              console.log(err);
                                            })

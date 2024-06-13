@@ -20,19 +20,33 @@ export default function Doctor_dashboard() {
 
     const { user, id } = useLocation()
 
+    const local = JSON.parse(localStorage.getItem("uid"))
+
+    console.log("local",local._id);
+
     useEffect(() => {
         allData()
         allPatients()
-    }, [])
+    }, [local._id])
 
 
     function allData() {
-        axios.get("http://localhost:8081/appointment/userAppointment", { params: { doctor: id } }).then((value) => {
-            setAppointments(value.data)
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
+        // http://localhost:8081/appointment/appointmentsByPatient?patientId=6666c50eaa856f76ffcdae19
+        axios
+          .get(`http://localhost:8081/appointment/appointmentsByDoctor?doctorId=${local._id}`)
+          .then((response) => {
+            setAppointments(response.data.task);
+          }).catch(err => console.log(err))
+      }
+    
+
+    // function allData() {
+    //     axios.get("http://localhost:8081/appointment/userAppointment", { params: { doctor: id } }).then((value) => {
+    //         setAppointments(value.data)
+    //     }).catch((err) => {
+    //         console.log(err);
+    //     })
+    // }
 
 
     function allPatients() {
@@ -44,16 +58,16 @@ export default function Doctor_dashboard() {
     }
 
 
-    function updateStatus(id, status) {
-        const result = axios.put(`http://localhost:8081/appointment/userAppointment/${appointments._id}`, { status })
+    // function updateStatus(id, status) {
+    //     const result = axios.put(`http://localhost:8081/appointment/userAppointment/${appointments._id}`, { status })
 
-        setAppointments(appointments.map((data) => data._id === id ? { ...appointments,status:  result.data.status } : appointments))
-    }
+    //     setAppointments(appointments.map((data) => data._id === id ? { ...appointments,status:  result.data.status } : appointments))
+    // }
 
 
     return (
         <>
-            <Doctor_Modal updateStatus={updateStatus} status={status} setStatus={setStatus} />
+            <Doctor_Modal  status={status} setStatus={setStatus} />
 
             <Nav_dashboard />
             <div className="container patient-dashboard text-center">

@@ -21,7 +21,7 @@ export default function Modal(props) {
             </div>
             <div className="modal-body">
               <div>
-                <Select style={{ width: 200 }} className="select" value={props.doctorId} onChange={(value)=>{return props.setDoctorId(value)}} placeholder="Select an Option.....">
+                <Select style={{ width: 200 }} name="doctorId" className="select" value={props.doctorId} onChange={(value)=>{return props.setDoctorId(value)}} placeholder="Select an Option.....">
 
                   {doctors.map((data,index)=>{
                      return(

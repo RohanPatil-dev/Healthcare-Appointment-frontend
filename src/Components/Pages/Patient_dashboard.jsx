@@ -20,7 +20,7 @@ export default function Patient_dashboard() {
 
   const [appointment, setAppointment] = useState([])
 
-  console.log("appointment",appointment);
+  console.log("appointment", appointment);
 
   const [doctors, setDoctors] = useState([])
 
@@ -32,7 +32,7 @@ export default function Patient_dashboard() {
 
   const local = JSON.parse(localStorage.getItem("uid"))
 
-  console.log("local",local._id);
+  console.log("local", local._id);
 
   useEffect(() => {
     addAppointment()
@@ -71,8 +71,8 @@ export default function Patient_dashboard() {
 
   function postAppointment() {
     const data = {
-      doctor_id: doctorId,
       patient_id: local._id,
+      doctor_id: doctorId,
       date: date,
       status: "pending"
     }
@@ -96,6 +96,14 @@ export default function Patient_dashboard() {
       console.log(err);
     })
   }
+
+
+  function getDocName(id){
+      const doctor = doctors.find((value)=>value._id === id)
+
+      return doctor ? doctor.name : "Unknown"
+  }
+
 
   return (
     <>
@@ -124,7 +132,7 @@ export default function Patient_dashboard() {
                 <>
                   <tr key={index + 1}>
                     <td>{index + 1}</td>
-                    <td>{data.doctorId}</td>
+                    <td>{getDocName(data.doctorId)}</td>
                     <td>{data.date}</td>
                     <td>{data.status}</td>
                     <td><button className="delete-btn" onClick={() => { deleteAppointment(data._id) }}>Delete</button></td>

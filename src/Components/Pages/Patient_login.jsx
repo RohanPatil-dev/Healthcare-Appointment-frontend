@@ -17,17 +17,32 @@ export default function Patient_login() {
   }
 
 
-  function signinData() {
-    const result = axios.post("http://localhost:8081/user/login", data).then(data => 
-                                          { localStorage.setItem("uid",JSON.stringify(data.data.msg),
-                                            console.log(data))          
-                                          }).catch((err) => {
-                                             console.log(err);
-                                           })
+ async function signinData(event) {
 
-                            if(result) {
-                                     navigate("/patient-dashboard")
-                             }
+  event.preventDefault()
+
+    try {
+      const result = await axios.post("http://localhost:8081/user/login", {email,password})
+             
+      localStorage.setItem("uid",JSON.stringify(result.data))
+
+       navigate("/patient-dashboard")
+
+    } catch (error) {
+        console.error("Invalid email and password",error);
+    }
+
+    
+    // .then(data => 
+    //                                       { localStorage.setItem("uid",JSON.stringify(data.data.msg),
+    //                                         console.log(data))          
+    //                                       }).catch((err) => {
+    //                                          console.log(err);
+    //                                        })
+
+    //                         if(result) {
+    //                                  navigate("/patient-dashboard")
+    //                          }
 }
 
 
@@ -37,7 +52,7 @@ export default function Patient_login() {
 
        <div className="container doc-log">
 
-            <form>
+            <form onSubmit={signinData}>
                 <div className="container doc-log-gridy">
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Email address</label>
@@ -50,7 +65,7 @@ export default function Patient_login() {
                 </div>
 
 
-                <button type="submit" className="btn doc-btn"  onClick={() => { signinData() }}>Submit</button>
+                <button type="submit" className="btn doc-btn"  >Submit</button>
             </form>
             </div>
     </>

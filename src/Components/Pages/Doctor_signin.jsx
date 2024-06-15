@@ -16,16 +16,30 @@ export default function Doctor_signin() {
     password: password
   }
 
-  function signinData() {
-    const result = axios.post("http://localhost:8081/doctor/docLogin", data).then(data => 
-                                          { localStorage.setItem("uid",JSON.stringify(data.data.msg))          
-                                          }).catch((err) => {
-                                             console.log(err);
-                                           })
+  async function signinData(event) {
 
-                            if(result) {
-                                     navigate("/doctor-dashboard")
-                             }
+    event.preventDefault()
+
+    try {
+      const result = await axios.post("http://localhost:8081/doctor/docLogin", {email,password})
+
+      localStorage.setItem("uid",JSON.stringify(result.data.msg))
+
+      navigate("/doctor-dashboard")
+
+    } catch (error) {
+      console.error("Invalid email and password",error);
+    }
+    
+    // .then(data => 
+    //                                       { localStorage.setItem("uid",JSON.stringify(data.data.msg))          
+    //                                       }).catch((err) => {
+    //                                          console.log(err);
+    //                                        })
+
+    //                         if(result) {
+    //                                  navigate("/doctor-dashboard")
+    //                          }
 }
 
 
@@ -35,7 +49,7 @@ export default function Doctor_signin() {
 
           <div className="container doc-log">
 
-<form>
+<form onSubmit={signinData}>
     <div className="container doc-log-gridy">
     <div className="form-group">
         <label htmlFor="exampleInputEmail1">Email address</label>
@@ -48,7 +62,7 @@ export default function Doctor_signin() {
     </div>
 
 
-    <button type="submit" className="btn doc-btn"  onClick={() => { signinData() }}>Submit</button>
+    <button type="submit" className="btn doc-btn">Submit</button>
 </form>
 </div>
     </>

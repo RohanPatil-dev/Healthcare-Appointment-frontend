@@ -92,16 +92,17 @@ export default function Patient_dashboard() {
   function deleteAppointment(id) {
     axios.delete(`http://localhost:8081/appointment/userAppointmentDelete/${id}`).then((value) => {
       console.log(`${id} : data deleted successfully`);
+      addAppointment()
     }).catch((err) => {
       console.log(err);
     })
   }
 
 
-  function getDocName(id){
-      const doctor = doctors.find((value)=>value._id === id)
+  function getDocName(id) {
+    const doctor = doctors.find((value) => value._id === id)
 
-      return doctor ? doctor.name : "Unknown"
+    return doctor ? doctor.name : "Unknown Doctor"
   }
 
 
@@ -127,7 +128,7 @@ export default function Patient_dashboard() {
             </tr>
           </thead>
           <tbody>
-            {appointment.map((data, index) => {
+            {appointment && appointment.map((data, index) => {
               return (
                 <>
                   <tr key={index + 1}>

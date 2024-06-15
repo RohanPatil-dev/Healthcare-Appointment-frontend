@@ -25,6 +25,8 @@ export default function Doctor_dashboard() {
 
     console.log("status", status);
 
+    const [selectedAppointment,setSelectedAppointment] = useState([])
+
     const local = JSON.parse(localStorage.getItem("uid"))
 
     console.log("local", local._id);
@@ -66,13 +68,13 @@ export default function Doctor_dashboard() {
     function getDoctor(id) {
         var getDocId = id
 
-        setUsers(getDocId)
+        setSelectedAppointment(getDocId)
         console.log("getDocId",getDocId);
     }
 
 
     function updateStatus() {
-        const result = axios.put(`http://localhost:8081/appointment/userAppointmentUpdate/${users._id}`, { status }).then((value)=>{
+        const result = axios.put(`http://localhost:8081/appointment/userAppointmentUpdate/${selectedAppointment._id}`, { status }).then((value)=>{
                 
             console.log("result",value.data);
             console.log("res",result.data);
@@ -80,9 +82,15 @@ export default function Doctor_dashboard() {
             console.log("success");
 
            
-
+           allPatients()
              allData()
         })
+    }
+
+    function getPatientName(id){
+        const patient = users.find((value) => value._id === id)
+
+        return patient ? patient.name : "Unknown Patient"
     }
 
 
@@ -109,7 +117,7 @@ export default function Doctor_dashboard() {
                                 <>
                                     <tr key={index + 1}>
                                         <th scope="row">{index + 1}</th>
-                                        <th scope="row">{data.patientId}</th>
+                                        <th scope="row">{getPatientName(data.patientId)}</th>
                                         <td className="doc">{data.date}</td>
                                         <td className="doc">{data.status}</td>
                                         <td><button className="btn btn-primary action" onClick={()=>{getDoctor(data)}} data-toggle="modal" data-target="#doctorModal">Status</button></td>

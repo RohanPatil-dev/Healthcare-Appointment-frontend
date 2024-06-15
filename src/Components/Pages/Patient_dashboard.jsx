@@ -24,7 +24,7 @@ export default function Patient_dashboard() {
 
   const [doctors, setDoctors] = useState([])
 
-  const [doctorId, setDoctorId] = useState(null)
+  const [doctorId, setDoctorId] = useState("")
 
   const [date, setDate] = useState("")
 
@@ -71,8 +71,8 @@ export default function Patient_dashboard() {
 
   function postAppointment() {
     const data = {
-      patient_id: local._id,
-      doctor_id: doctorId,
+      patientId: local._id,
+      doctorId: doctorId,
       date: date,
       status: "pending"
     }

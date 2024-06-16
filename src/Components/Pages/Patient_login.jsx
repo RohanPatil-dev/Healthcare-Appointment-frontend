@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 
-
+import {ToastContainer,toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 import axios from "axios"
 
@@ -24,20 +25,26 @@ export default function Patient_login() {
     event.preventDefault()
  
     if(!data.email && !data.password){
-       alert("Form is empty !")
+      toast.error("Form is empty !")
+      //  alert("Form is empty !")
     }else if (!data.email) {
-      alert("Please insert your email !")
+      toast.error("Please insert your email !")
+      // alert("Please insert your email !")
     } else if (!data.password) {
-      alert("Please insert your password !")
+      toast.error("Please insert your password !")
+      // alert("Please insert your password !")
     } 
     else if (data.password.length > 8) {
-      alert("You are entering password characters over 8 characters !");
+      toast.error("You are entering password characters over 8 characters !")
+      // alert("You are entering password characters over 8 characters !");
     } else if (data.password.length < 8) {
-      alert("You are entering password characters under 8 characters !");
+      toast.error("You are entering password characters under 8 characters !")
+      // alert("You are entering password characters under 8 characters !");
     }
      else {
+      toast.success("success !")
 
-      alert("success !")
+      // alert("success !")
 
       const result = await axios.post("http://localhost:8081/user/login", data)
 
@@ -64,6 +71,7 @@ export default function Patient_login() {
 
   return (
     <>
+    <ToastContainer/>
       <h1 className="heading">Patient Signin</h1>
 
       <div className="container doc-log">

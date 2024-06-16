@@ -1,5 +1,8 @@
 import React, { useState } from "react"
 
+import {ToastContainer,toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 import axios from "axios"
 
 import { useNavigate } from "react-router-dom"
@@ -33,39 +36,55 @@ export default function Patient_registration() {
 
     function signupData(event) {
 
+        <ToastContainer/>
+
         event.preventDefault()
 
         if (!data.name && !data.phoneNumber && !data.gender && !data.age && !data.DOB && !data.bloodGroup && !data.email && !data.password && !data.address) {
-            alert("Form is empty !");
+            toast.error("Form is empty !")
+            // alert("Form is empty !");
         }else if (!data.name) {
-            alert("Please insert your Name !");
+            toast.error("Please insert your Name !")
+            // alert("Please insert your Name !");
         }  else if (!data.phoneNumber) {
-            alert("Please insert your phoneNumber !");
+            toast.error("Please insert your phoneNumber !")
+            // alert("Please insert your phoneNumber !");
         } else if (data.phoneNumber.length > 10) {
-            alert("You are entering phoneNumber characters over 10 characters  !");
+            toast.error("You are entering phoneNumber characters over 10 characters !")
+            // alert("You are entering phoneNumber characters over 10 characters  !");
         } else if (data.phoneNumber.length < 10) {
-            alert("You are entering phoneNumber characters under 10 characters  !");
+            toast.error("You are entering phoneNumber characters under 10 characters !")
+            // alert("You are entering phoneNumber characters under 10 characters  !");
         } else if (!data.gender) {
-            alert("Please insert your Gender !");
+            toast.error("Please insert your Gender !")
+            // alert("Please insert your Gender !");
         } else if (!data.age) {
-            alert("Please insert your Age !");
+            toast.error("Please insert your Age !")
+            // alert("Please insert your Age !");
         } else if (!data.DOB) {
-            alert("Please insert your date of birth !");
+            toast.error("Please insert your date of birth !")
+            // alert("Please insert your date of birth !");
         } else if (!data.bloodGroup) {
-            alert("Please insert your phoneNumber !");
+            toast.error("Please select your blood group !")
+            // alert("Please insert your phoneNumber !");
         } else if (!data.email) {
-            alert("Please insert your email !");
+            toast.error("Please insert your email !")
+            // alert("Please insert your email !");
         } else if (!data.password) {
-            alert("Please insert your password !");
+            toast.error("Please insert your password !")
+            // alert("Please insert your password !");
         } else if (data.password.length > 8) {
-            alert("You are entering password characters over 8 characters !");
+            toast.error("You are entering password characters over 8 characters !")
+            // alert("You are entering password characters over 8 characters !");
         } else if (data.password.length < 8) {
-            alert("You are entering password characters under 8 characters !");
+            toast.error("You are entering password characters under 8 characters !")
+            // alert("You are entering password characters under 8 characters !");
         } else if (!data.address) {
-            alert("Please insert your address !");
+            toast.error("Please insert your address !")
+            // alert("Please insert your address !");
         } else {
-
-            alert("Success !")
+            toast.success("Success !")
+            // alert("Success !")
 
             const result = axios.post("http://localhost:8081/user/register", data).then(data => {
                 // localStorage.setItem("uid",JSON.stringify(data.data)),
@@ -79,13 +98,13 @@ export default function Patient_registration() {
             }
 
         }
-
-
     }
 
 
     return (
         <>
+            <ToastContainer/>
+
             <h1 className="heading">Patient Registration</h1>
 
             <div className="container doc-registrastion">

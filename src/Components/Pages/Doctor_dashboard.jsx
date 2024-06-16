@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react"
 
+import {ToastContainer,toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 import { useLocation } from "react-router-dom";
 
 import Doctor_Modal from "./Doctor_Modal"
@@ -76,10 +79,11 @@ export default function Doctor_dashboard() {
     function updateStatus() {
 
         if(status === undefined){
-           alert("doesn't selected !")
+            toast.error("Choose your status !")
+        //    alert("Choose your status !")
         }else{
-
-            alert("success !")
+            toast.success("Status updated successfully !")
+            // alert("Status updated successfully !")
 
             const result = axios.put(`http://localhost:8081/appointment/userAppointmentUpdate/${selectedAppointment._id}`, { status }).then((value)=>{
                 
@@ -106,6 +110,8 @@ export default function Doctor_dashboard() {
 
     return (
         <>
+    <ToastContainer/>
+
             <Doctor_Modal users={users} updateStatus={updateStatus} status={status} setStatus={setStatus} />
 
             <Nav_dashboard />

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+import {ToastContainer,toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 import Nav_dashboard from "./Nav_dashboard";
 
 import axios from "axios";
@@ -78,12 +81,14 @@ export default function Patient_dashboard() {
     }
 
     if (doctorId === "") {
-       alert("Doctor doesn't selected !")
+      toast.error("Select your doctor !")
+      //  alert("Select your doctor !")
     }else if(date === ""){
-      alert("Date doesn't selected !")
+      toast.error("Select your appointment Date !")
+      // alert("Select your appointment Date !")
     }else{
-
-      alert("success !")
+      toast.success("Appointment added successfully !")
+      // alert("success !")
 
       axios.post("http://localhost:8081/appointment/userAppointment", data).then((data) => {
         console.log(data);
@@ -99,7 +104,8 @@ export default function Patient_dashboard() {
 
   function deleteAppointment(id) {
 
-    alert("Appointment deleted successfully !")
+    toast.success("Appointment deleted successfully !")
+    // alert("Appointment deleted successfully !")
 
     axios.delete(`http://localhost:8081/appointment/userAppointmentDelete/${id}`).then((value) => {
       console.log(`${id} : data deleted successfully`);
@@ -119,6 +125,9 @@ export default function Patient_dashboard() {
 
   return (
     <>
+
+<ToastContainer/>
+
       <Modal btn={postAppointment} doctors={doctors} date={date} setDate={setDate} doctorId={doctorId} setDoctorId={setDoctorId} />
 
       <Nav_dashboard />

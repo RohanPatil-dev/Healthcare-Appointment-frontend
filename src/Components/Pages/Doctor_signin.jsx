@@ -20,17 +20,27 @@ export default function Doctor_signin() {
 
     event.preventDefault()
 
-    try {
-      const result = await axios.post("http://localhost:8081/doctor/docLogin", {email,password})
+    if(!data.email && !data.password){
+      alert("Form is empty !")
+   }else if (!data.email) {
+     alert("Please insert your email !")
+   } else if (!data.password) {
+     alert("Please insert your password !")
+   } else if (data.password.length > 8) {
+     alert("You are entering password characters over 8 characters !");
+   } else if (data.password.length < 8) {
+     alert("You are entering password characters under 8 characters !");
+   } else {
+
+     alert("success !")
+
+      const result = await axios.post("http://localhost:8081/doctor/docLogin",data)
 
       localStorage.setItem("uid",JSON.stringify(result.data.msg))
 
       navigate("/doctor-dashboard")
 
-    } catch (error) {
-      console.error("Invalid email and password",error);
-    }
-    
+   }
     // .then(data => 
     //                                       { localStorage.setItem("uid",JSON.stringify(data.data.msg))          
     //                                       }).catch((err) => {

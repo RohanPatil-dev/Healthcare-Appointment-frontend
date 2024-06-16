@@ -15,7 +15,7 @@ export default function Patient_registration() {
     const [age, setAge] = useState("")
     const [DOB, setDOB] = useState("")
     const [bloodGroup, setBloodGroup] = useState("")
-    const [ email, setEmail] = useState("")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [address, setAddress] = useState("")
 
@@ -31,18 +31,56 @@ export default function Patient_registration() {
         address: address
     }
 
-    function signupData() {
-        const result = axios.post("http://localhost:8081/user/register", data).then(data => 
-                                              { 
-                                                // localStorage.setItem("uid",JSON.stringify(data.data)),
-                                                console.log(data)          
-                                              }).catch((err) => {
-                                                 console.log(err);
-                                               })
+    function signupData(event) {
 
-                                if(result) {
-                                         navigate("/")
-                                 }
+        event.preventDefault()
+
+        if (!data.name && !data.phoneNumber && !data.gender && !data.age && !data.DOB && !data.bloodGroup && !data.email && !data.password && !data.address) {
+            alert("Form is empty !");
+        }else if (!data.name) {
+            alert("Please insert your Name !");
+        }  else if (!data.phoneNumber) {
+            alert("Please insert your phoneNumber !");
+        } else if (data.phoneNumber.length > 10) {
+            alert("You are entering phoneNumber characters over 10 characters  !");
+        } else if (data.phoneNumber.length < 10) {
+            alert("You are entering phoneNumber characters under 10 characters  !");
+        } else if (!data.gender) {
+            alert("Please insert your Gender !");
+        } else if (!data.age) {
+            alert("Please insert your Age !");
+        } else if (!data.DOB) {
+            alert("Please insert your date of birth !");
+        } else if (!data.bloodGroup) {
+            alert("Please insert your phoneNumber !");
+        } else if (!data.email) {
+            alert("Please insert your email !");
+        } else if (!data.password) {
+            alert("Please insert your password !");
+        } else if (data.password.length > 8) {
+            alert("You are entering password characters over 8 characters !");
+        } else if (data.password.length < 8) {
+            alert("You are entering password characters under 8 characters !");
+        } else if (!data.address) {
+            alert("Please insert your address !");
+        } else {
+
+            alert("Success !")
+
+            const result = axios.post("http://localhost:8081/user/register", data).then(data => {
+                // localStorage.setItem("uid",JSON.stringify(data.data)),
+                console.log(data)
+            }).catch((err) => {
+                console.log(err);
+            })
+
+            if (result) {
+                navigate("/")
+            }
+
+        }
+
+
     }
 
 
@@ -51,31 +89,31 @@ export default function Patient_registration() {
             <h1 className="heading">Patient Registration</h1>
 
             <div className="container doc-registrastion">
-             <form>
+                <form onSubmit={signupData}>
                     <div className="doc-gridy">
                         <div className="form-group">
                             <label htmlFor="exampleInputname">Name</label>
-                            <input type="text" value={name} className="form-control" id="exampleInputname" aria-describedby="emailHelp" onChange={(event)=>{return setName(event.target.value) }} placeholder="Enter your Name............" />
+                            <input type="text" value={name} className="form-control" id="exampleInputname" aria-describedby="emailHelp" onChange={(event) => { return setName(event.target.value) }} placeholder="Enter your Name............" />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="exampleInputphoneNumber">PhoneNumber</label>
-                            <input type="tel" value={phoneNumber} className="form-control" id="exampleInputphoneNumber" onChange={(event)=>{return setPhoneNumber(event.target.value) }}  placeholder="Enter your Number............." />
+                            <input type="tel" value={phoneNumber} className="form-control" id="exampleInputphoneNumber" onChange={(event) => { return setPhoneNumber(event.target.value) }} placeholder="Enter your Number............." />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="exampleInputAge">Age</label>
-                            <input type="number" value={age} className="form-control" id="exampleInputAge" onChange={(event)=>{return setAge(event.target.value) }}  placeholder="Enter your Age............" />
+                            <input type="number" value={age} className="form-control" id="exampleInputAge" onChange={(event) => { return setAge(event.target.value) }} placeholder="Enter your Age............" />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="exampleInputdate">Date Of Birth</label>
-                            <input type="date" value={DOB} className="form-control" min="2001-01-01" max="2024-06-11" id="exampleInputdate" onChange={(event)=>{return setDOB(event.target.value) }}  placeholder="Enter your Age............" />
+                            <input type="date" value={DOB} className="form-control" min="2001-01-01" max="2024-06-11" id="exampleInputdate" onChange={(event) => { return setDOB(event.target.value) }} placeholder="Enter your Age............" />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="exampleFormControlSelect1">Blood Group</label>
-                            <select className="form-control" id="exampleFormControlSelect1" value={bloodGroup} onChange={(event)=>{return setBloodGroup(event.target.value) }} >
+                            <select className="form-control" id="exampleFormControlSelect1" value={bloodGroup} onChange={(event) => { return setBloodGroup(event.target.value) }} >
                                 <option value="AB+">AB+</option>
                                 <option value="AB-">AB-</option>
                                 <option value="A+">A+</option>
@@ -87,27 +125,27 @@ export default function Patient_registration() {
 
                         <div className="form-group">
                             <label htmlFor="exampleInputemail">Email</label>
-                            <input type="email" value={email} className="form-control" id="exampleInputemail" onChange={(event)=>{return setEmail(event.target.value) }}  aria-describedby="emailHelp" placeholder="Enter your email........" />
+                            <input type="email" value={email} className="form-control" id="exampleInputemail" onChange={(event) => { return setEmail(event.target.value) }} aria-describedby="emailHelp" placeholder="Enter your email........" />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="exampleInputphoneNumber">Password</label>
-                            <input type="password" value={password} className="form-control" id="exampleInputpassword" onChange={(event)=>{return setPassword(event.target.value) }}  placeholder="Password" />
+                            <input type="password" value={password} className="form-control" id="exampleInputpassword" onChange={(event) => { return setPassword(event.target.value) }} placeholder="Password" />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="exampleInputemail">Address</label> 
-                            <input type="text" value={address} className="form-control" id="exampleInputaddress" onChange={(event)=>{return setAddress(event.target.value) }}  aria-describedby="emailHelp" placeholder="Enter your address............" />
+                            <label htmlFor="exampleInputemail">Address</label>
+                            <input type="text" value={address} className="form-control" id="exampleInputaddress" onChange={(event) => { return setAddress(event.target.value) }} aria-describedby="emailHelp" placeholder="Enter your address............" />
                         </div>
 
                     </div>
 
                     <div className="form-check selection-btn">
-                        <input className="form-check-input_1" type="checkbox" name="male" id="male" onChange={(event)=>{return setGender(event.target.value) }}  /> <label htmlFor="male">Male</label>
-                        <input className="form-check-input_2" type="checkbox" name="female" id="female" onChange={(event)=>{return setGender(event.target.value) }}  /> <label htmlFor="female">Female</label>
+                        <input className="form-check-input_1" type="checkbox" name="male" id="male" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="male">Male</label>
+                        <input className="form-check-input_2" type="checkbox" name="female" id="female" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="female">Female</label>
                     </div>
 
-                    <button type="submit" className="btn doc-btn" onClick={() => { signupData() }}>Submit</button>
+                    <button type="submit" className="btn doc-btn">Submit</button>
                 </form>
             </div>
         </>

@@ -33,16 +33,49 @@ export default function Doctor_registration() {
   }
 
 
-  function signupData() {
-    const result = axios.post("http://localhost:8081/doctor/docRegister", data).then(data => {
-      // localStorage.setItem("uid",JSON.stringify(data.data)),
-      console.log(data)
-    }).catch((err) => {
-      console.log(err);
-    })
+  function signupData(event) {
 
-    if (result) {
-      navigate("/")
+    event.preventDefault()
+
+    if (!data.name && !data.phoneNumber && !data.gender && !data.age && !data.email && !data.password && !data.address && !data.city && !data.specialist) {
+      alert("Form is empty !");
+    }else if (!data.name) {
+      alert("Please insert your Name !");
+    } else if (!data.phoneNumber) {
+      alert("Please insert your phoneNumber !");
+    } else if (data.phoneNumber.length > 10) {
+      alert("You are entering phoneNumber characters over 10 characters  !");
+    } else if (data.phoneNumber.length < 10) {
+      alert("You are entering phoneNumber characters under 10 characters  !");
+    } else if (!data.gender) {
+      alert("Please insert your Gender !");
+    } else if (!data.age) {
+      alert("Please insert your Age !");
+    } else if (!data.email) {
+      alert("Please insert your email !");
+    } else if (!data.password) {
+      alert("Please insert your password !");
+    } else if (data.password.length > 8) {
+      alert("You are entering password characters over 8 characters !");
+    } else if (data.password.length < 8) {
+      alert("You are entering password characters under 8 characters !");
+    } else if (!data.address) {
+      alert("Please insert your address !");
+    } else if (!data.city) {
+      alert("Please insert your city !");
+    } else if (!data.specialist) {
+      alert("Please insert your specialist !");
+    } else {
+      const result = axios.post("http://localhost:8081/doctor/docRegister", data).then(data => {
+        // localStorage.setItem("uid",JSON.stringify(data.data)),
+        console.log(data)
+      }).catch((err) => {
+        console.log(err);
+      })
+
+      if (result) {
+        navigate("/")
+      }
     }
   }
 
@@ -53,7 +86,7 @@ export default function Doctor_registration() {
       <h1 className="heading">Doctor Registration</h1>
 
       <div className="container doc-registrastion">
-        <form>
+        <form onSubmit={signupData}>
           <div className="doc-gridy">
             <div className="form-group">
               <label for="exampleInputname">Name</label>
@@ -106,7 +139,7 @@ export default function Doctor_registration() {
             <input className="form-check-input_2" type="checkbox" name="female" id="female" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="female">Female</label>
           </div>
 
-          <button type="submit" className="btn doc-btn" onClick={() => { signupData() }}>Submit</button>
+          <button type="submit" className="btn doc-btn">Submit</button>
         </form>
       </div>
     </>

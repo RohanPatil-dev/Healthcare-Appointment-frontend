@@ -9,6 +9,7 @@ import Index from './Components/Index';
 function App() {
 return(
      <>
+     {/* <Registration /> */}
          <Index />
 
 {/* <BrowserRouter>

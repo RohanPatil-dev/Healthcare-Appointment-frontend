@@ -74,17 +74,27 @@ export default function Doctor_dashboard() {
 
 
     function updateStatus() {
-        const result = axios.put(`http://localhost:8081/appointment/userAppointmentUpdate/${selectedAppointment._id}`, { status }).then((value)=>{
+
+        if(status === undefined){
+           alert("doesn't selected !")
+        }else{
+
+            alert("success !")
+
+            const result = axios.put(`http://localhost:8081/appointment/userAppointmentUpdate/${selectedAppointment._id}`, { status }).then((value)=>{
                 
-            console.log("result",value.data);
-            console.log("res",result.data);
+                console.log("result",value.data);
+                console.log("res",result.data);
+    
+                console.log("success !");
+    
+               setStatus(undefined)
+               
+               allPatients()
+                 allData()
+            })
+        }
 
-            console.log("success");
-
-           
-           allPatients()
-             allData()
-        })
     }
 
     function getPatientName(id){

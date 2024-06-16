@@ -26,11 +26,13 @@ export default function Doctor_signin() {
      alert("Please insert your email !")
    } else if (!data.password) {
      alert("Please insert your password !")
-   } else if (data.password.length > 8) {
+   }
+    else if (data.password.length > 8) {
      alert("You are entering password characters over 8 characters !");
    } else if (data.password.length < 8) {
      alert("You are entering password characters under 8 characters !");
-   } else {
+   } 
+   else {
 
      alert("success !")
 

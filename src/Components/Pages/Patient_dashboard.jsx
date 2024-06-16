@@ -77,19 +77,30 @@ export default function Patient_dashboard() {
       status: "pending"
     }
 
-    axios.post("http://localhost:8081/appointment/userAppointment", data).then((data) => {
-      console.log(data);
-      console.log("success");
-      addAppointment()
-    }).catch((err) => {
-      console.log(err);
-      console.log("err");
-    })
+    if (doctorId === "") {
+       alert("Doctor doesn't selected !")
+    }else if(date === ""){
+      alert("Date doesn't selected !")
+    }else{
 
+      alert("success !")
 
+      axios.post("http://localhost:8081/appointment/userAppointment", data).then((data) => {
+        console.log(data);
+        console.log("success");
+        addAppointment()
+      }).catch((err) => {
+        console.log(err);
+        console.log("err");
+      })
+  
+    }
   }
 
   function deleteAppointment(id) {
+
+    alert("Appointment deleted successfully !")
+
     axios.delete(`http://localhost:8081/appointment/userAppointmentDelete/${id}`).then((value) => {
       console.log(`${id} : data deleted successfully`);
       addAppointment()

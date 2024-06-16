@@ -55,17 +55,22 @@ export default function Doctor_registration() {
       alert("Please insert your email !");
     } else if (!data.password) {
       alert("Please insert your password !");
-    } else if (data.password.length > 8) {
+    } 
+    else if (data.password.length > 8) {
       alert("You are entering password characters over 8 characters !");
     } else if (data.password.length < 8) {
       alert("You are entering password characters under 8 characters !");
-    } else if (!data.address) {
+    } 
+    else if (!data.address) {
       alert("Please insert your address !");
     } else if (!data.city) {
       alert("Please insert your city !");
     } else if (!data.specialist) {
       alert("Please insert your specialist !");
     } else {
+
+      alert("Please insert your specialist !");
+
       const result = axios.post("http://localhost:8081/doctor/docRegister", data).then(data => {
         // localStorage.setItem("uid",JSON.stringify(data.data)),
         console.log(data)

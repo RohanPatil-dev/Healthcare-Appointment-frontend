@@ -56,7 +56,7 @@ export default function Patient_registration() {
             toast.error("You are entering phoneNumber characters under 10 characters !")
             // alert("You are entering phoneNumber characters under 10 characters  !");
         } else if (!data.gender) {
-            toast.error("Please insert your Gender !")
+            toast.error("Please select your Gender !")
             // alert("Please insert your Gender !");
         } else if (!data.age) {
             toast.error("Please insert your Age !")
@@ -160,8 +160,8 @@ export default function Patient_registration() {
                     </div>
 
                     <div className="form-check selection-btn">
-                        <input className="form-check-input_1" type="checkbox" name="male" id="male" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="male">Male</label>
-                        <input className="form-check-input_2" type="checkbox" name="female" id="female" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="female">Female</label>
+                        <input className="form-check-input_1" type="checkbox" value={"Male"} name="male" id="male" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="male">Male</label>
+                        <input className="form-check-input_2" type="checkbox" value={"Female"} name="female" id="female" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="female">Female</label>
                     </div>
 
                     <button type="submit" className="btn doc-btn">Submit</button>

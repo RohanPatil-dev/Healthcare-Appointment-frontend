@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 
 import {ToastContainer,toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,6 +21,20 @@ export default function Patient_registration() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [address, setAddress] = useState("")
+
+    const [users, setUsers] = useState([])
+
+    useEffect(()=>{
+      allPatients()
+    })
+
+    function allPatients() {
+        axios.get("http://localhost:8081/user/allPatient").then((value) => {
+            setUsers(value.data)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
 
     const data = {
         name: name,
@@ -83,19 +97,31 @@ export default function Patient_registration() {
             toast.error("Please insert your address !")
             // alert("Please insert your address !");
         } else {
-            toast.success("Success !")
-            // alert("Success !")
 
-            const result = axios.post("http://localhost:8081/user/register", data).then(data => {
-                // localStorage.setItem("uid",JSON.stringify(data.data)),
-                console.log(data)
-            }).catch((err) => {
-                console.log(err);
-            })
+            const result = axios.post("http://localhost:8081/user/register", data)
 
-            if (result) {
+            let condition = users.find((value) => value.email === data.email)
+
+            if(condition){
+                toast.error("Email is already exist !")
+            }else{
+                toast.success("Success !")
                 navigate("/")
             }
+            
+            // alert("Success !")
+
+         
+            // .then(data => {
+            //     // localStorage.setItem("uid",JSON.stringify(data.data)),
+            //     console.log(data)
+            // }).catch((err) => {
+            //     console.log(err);
+            // })
+
+            // if (result) {
+            //     navigate("/")
+            // }
 
         }
     }

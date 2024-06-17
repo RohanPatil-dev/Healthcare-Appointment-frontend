@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
-import {ToastContainer,toast} from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 
 import axios from "axios"
@@ -23,6 +23,21 @@ export default function Doctor_registration() {
   const [city, setCity] = useState("")
   const [specialist, setSpecialist] = useState("")
 
+  const [doctor, setDoctors] = useState([])
+
+  useEffect(() => {
+    addDoctors()
+  })
+
+  function addDoctors() {
+    axios.get(`http://localhost:8081/doctor/docData`).then((value) => {
+      console.log("doctor", value.data);
+      return setDoctors(value.data)
+    }).catch((err) => {
+      return err
+    })
+  }
+
   const data = {
     name: name,
     phoneNumber: phoneNumber,
@@ -43,7 +58,7 @@ export default function Doctor_registration() {
     if (!data.name && !data.phoneNumber && !data.gender && !data.age && !data.email && !data.password && !data.address && !data.city && !data.specialist) {
       toast.error("Form is empty !")
       // alert("Form is empty !");
-    }else if (!data.name) {
+    } else if (!data.name) {
       toast.error("Please insert your Name !")
       // alert("Please insert your Name !");
     } else if (!data.phoneNumber) {
@@ -67,14 +82,14 @@ export default function Doctor_registration() {
     } else if (!data.password) {
       toast.error("Please insert your password !")
       // alert("Please insert your password !");
-    } 
+    }
     else if (data.password.length > 8) {
       toast.error("You are entering password characters over 8 characters !")
       // alert("You are entering password characters over 8 characters !");
     } else if (data.password.length < 8) {
       toast.error("You are entering password characters under 8 characters !")
       // alert("You are entering password characters under 8 characters !");
-    } 
+    }
     else if (!data.address) {
       toast.error("Please insert your address !")
       // alert("Please insert your address !");
@@ -85,19 +100,31 @@ export default function Doctor_registration() {
       toast.error("Please select your specialist !")
       // alert("Please insert your specialist !");
     } else {
-      toast.success("Success !")
+
+      const result = axios.post("http://localhost:8081/doctor/docRegister", data)
+
+      let condition = doctor.find((value) => value.email === data.email)
+
+      if (condition) {
+        toast.error("Email is already exist !")
+      } else {
+        toast.success("Success !")
+        navigate("/")
+      }
+
+
       // alert("Success !");
 
-      const result = axios.post("http://localhost:8081/doctor/docRegister", data).then(data => {
-        // localStorage.setItem("uid",JSON.stringify(data.data)),
-        console.log(data)
-      }).catch((err) => {
-        console.log(err);
-      })
+      // const result = axios.post("http://localhost:8081/doctor/docRegister", data).then(data => {
+      //   // localStorage.setItem("uid",JSON.stringify(data.data)),
+      //   console.log(data)
+      // }).catch((err) => {
+      //   console.log(err);
+      // })
 
-      if (result) {
-        navigate("/doc-login")
-      }
+      // if (result) {
+      //   navigate("/doc-login")
+      // }
     }
   }
 
@@ -105,7 +132,7 @@ export default function Doctor_registration() {
 
   return (
     <>
-    <ToastContainer/>
+      <ToastContainer />
 
       <h1 className="heading">Doctor Registration</h1>
 

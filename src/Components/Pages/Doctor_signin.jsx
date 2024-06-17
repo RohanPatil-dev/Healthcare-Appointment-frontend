@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,6 +13,12 @@ export default function Doctor_signin() {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const [doctor,setDoctors] = useState([])
+
+  useEffect(()=>{
+    addDoctors()
+  })
 
   const data = {
     email: email,
@@ -42,15 +48,23 @@ export default function Doctor_signin() {
     }
     else {
 
-      toast.success("success !")
-      // alert("success !")
-
       const result = await axios.post("http://localhost:8081/doctor/docLogin", data)
 
-      localStorage.setItem("uid", JSON.stringify(result.data.msg))
+      let condition = doctor.find((value) => value.email === result.data.email)
 
-      navigate("/doctor-dashboard")
+      console.log("condition",condition);
 
+      if (!condition) {
+        toast.error(`${result.data.error}`)
+       }else{
+        toast.success("success !")
+
+        localStorage.setItem("uid", JSON.stringify(result.data))
+
+        navigate("/doctor-dashboard")
+       }
+
+      // alert("success !")
     }
     // .then(data => 
     //                                       { localStorage.setItem("uid",JSON.stringify(data.data.msg))          
@@ -63,6 +77,15 @@ export default function Doctor_signin() {
     //                          }
   }
 
+
+  function addDoctors() {
+    axios.get(`http://localhost:8081/doctor/docData`).then((value) => {
+      console.log("doctor", value.data);
+      return setDoctors(value.data)
+    }).catch((err) => {
+      return err
+    })
+  }
 
   return (
     <>

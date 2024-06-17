@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 
 import {ToastContainer,toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,6 +13,22 @@ export default function Patient_login() {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const [users, setUsers] = useState([])
+
+useEffect(()=>{
+  allPatients()
+})
+
+  function allPatients() {
+    axios.get("http://localhost:8081/user/allPatient").then((value) => {
+        setUsers(value.data)
+    }).catch((err) => {
+        console.log(err);
+    })
+}
+
+
 
   const data = {
     email: email,
@@ -42,16 +58,26 @@ export default function Patient_login() {
       // alert("You are entering password characters under 8 characters !");
     }
      else {
-      toast.success("success !")
+      const result = await axios.post("http://localhost:8081/user/login", data)
+    
+       let condition = users.find((value) => value.email === result.data.email)
+
+       console.log("condition",condition);
 
       // alert("success !")
 
-      const result = await axios.post("http://localhost:8081/user/login", data)
+      // const result = await axios.post("http://localhost:8081/user/login", data)
 
-      localStorage.setItem("uid", JSON.stringify(result.data))
+         if (!condition) {
+          toast.error(`${result.data.msg}`)
+         }else{
+          toast.success("success !")
 
-      navigate("/patient-dashboard")
+          localStorage.setItem("uid", JSON.stringify(result.data))
 
+          navigate("/patient-dashboard")
+      
+         }
 
     }
 

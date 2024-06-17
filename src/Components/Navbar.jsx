@@ -1,6 +1,7 @@
 import React from "react"
 
 import "../CSS/Navbar.css"
+import "../CSS/media.css"
 
 import {Outlet,Link} from "react-router-dom"
 

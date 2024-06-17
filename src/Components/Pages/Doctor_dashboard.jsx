@@ -120,7 +120,7 @@ export default function Doctor_dashboard() {
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Patient ID</th>
+                            <th scope="col">Patient</th>
                             <th scope="col">Date</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>

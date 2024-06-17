@@ -96,7 +96,7 @@ export default function Doctor_registration() {
       })
 
       if (result) {
-        navigate("/")
+        navigate("/doc-login")
       }
     }
   }

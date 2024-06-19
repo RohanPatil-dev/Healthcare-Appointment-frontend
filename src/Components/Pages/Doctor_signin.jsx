@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react"
+import React, { useState, useEffect } from "react"
 
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,9 +14,9 @@ export default function Doctor_signin() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const [doctor,setDoctors] = useState([])
+  const [doctor, setDoctors] = useState([])
 
-  useEffect(()=>{
+  useEffect(() => {
     addDoctors()
   })
 
@@ -52,17 +52,17 @@ export default function Doctor_signin() {
 
       let condition = doctor.find((value) => value.email === result.data.email)
 
-      console.log("condition",condition);
+      console.log("condition", condition);
 
       if (!condition) {
         toast.error(`${result.data.error}`)
-       }else{
+      } else {
         toast.success("success !")
 
         localStorage.setItem("uid", JSON.stringify(result.data))
 
         navigate("/doctor-dashboard")
-       }
+      }
 
       // alert("success !")
     }
@@ -92,25 +92,34 @@ export default function Doctor_signin() {
 
       <ToastContainer />
 
-      <h1 className="heading">Doctor Signin</h1>
 
-      <div className="container doc-log">
 
-        <form onSubmit={signinData}>
-          <div className="container doc-log-gridy">
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Email address</label>
-              <input type="email" name="email" value={email} onChange={(event) => { return setEmail(event.target.value) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+      <div className="doc-log">
+
+        <div id="log-img">
+          <img src="./images/doctor.jpeg" alt="" id="doc-img" />
+        </div>
+
+        <div id="login-form">
+          <h1 className="heading">Doctor Signin</h1>
+          <form onSubmit={signinData}>
+            <div className="container doc-log-gridy">
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Email address</label>
+                <img src="./images/email.png" alt="" id="email" />
+                <input type="email" name="email" value={email} onChange={(event) => { return setEmail(event.target.value) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">Password</label>
+                <img src="./images/password.png" alt="" id="password"/>
+                <input type="password" name="password" value={password} onChange={(event) => { return setPassword(event.target.value) }} className="form-control" id="exampleInputPassword1" placeholder="Password" />
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Password</label>
-              <input type="password" name="password" value={password} onChange={(event) => { return setPassword(event.target.value) }} className="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-          </div>
 
 
-          <button type="submit" className="btn doc-btn">Submit</button>
-        </form>
+            <button type="submit" className="btn doc-btn">Submit</button>
+          </form>
+        </div>
       </div>
     </>
   )

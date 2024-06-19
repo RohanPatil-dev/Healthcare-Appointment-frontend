@@ -1,3 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .navbar{
     background-color: #007aa5;
     font-weight: 600;
@@ -58,15 +64,15 @@
 }
 
 .doc-btn{
-    margin-top: 50px;
+    margin-top: 10px;
     height: 50px;
-    width: 200px;
+    width: 400px;
     font-size: 25px;
     font-weight: bold;
     border-radius: 12px;
-    margin-left: 455px;
-    color: #007aa5;
-    box-shadow: 0px 5px 7px 5px rgb(201, 141, 141);
+    margin-left: 80px;
+    color: white;
+    background-color: rgb(202, 58, 202);
     margin-bottom: 50px;
 }
 
@@ -74,7 +80,8 @@
 /* login */
 
 .doc-log-gridy{
-    margin-left: 360px;
+    margin-left: 70px;
+    margin-top: 50px;
 }
 
 .doc-log-gridy .form-group input {
@@ -87,7 +94,26 @@
 }
 
 .doc-log{
-    margin-top: 100px;
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#login-form{
+    padding: 20px;
+    width: 600px;
+    margin-right: 100px;
+    box-shadow: 0px 3px 10px 5px gray;
+}
+
+#log-img{
+    margin-left: 60px;
+}
+
+#doc-img{
+    height: 500px;
 }
 
 /* patient-dashboard */
@@ -126,12 +152,10 @@ td,th{
   font-size: 25px;
 }
 
-
 .action{
     box-shadow: 0px 2px 8px 5px gray;
     font-size: 20px;
 }
-
 
 .heading{
     text-align: center;
@@ -139,8 +163,21 @@ td,th{
     font-size: 50px;
     font-weight: bold;
     font-style: italic;
-    color: red;
-    text-shadow: 5px 7px 7px rgb(76, 76, 212);
+
+}
+
+#email{
+    position: relative;
+    height: 30px;
+    top: 40px;
+    right: 110px;
+}
+
+#password{
+    position: relative;
+    height: 30px;
+    top: 40px;
+    right: 70px;
 }
 
 /* nav dashboard */
@@ -158,4 +195,16 @@ td,th{
     border-radius: 10px;
     box-shadow: 0px 6px 6px 4px white;
     border: none;
+}
+
+
+.form-group input{
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 70px;
+}
+
+.form-group input::placeholder{
+    font-size: 20px;
+    color: purple;
 }

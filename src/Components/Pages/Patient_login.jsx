@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from "react"
+import React, { useState, useEffect } from "react"
 
-import {ToastContainer,toast} from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 
 import axios from "axios"
@@ -16,17 +16,17 @@ export default function Patient_login() {
 
   const [users, setUsers] = useState([])
 
-useEffect(()=>{
-  allPatients()
-})
+  useEffect(() => {
+    allPatients()
+  })
 
   function allPatients() {
     axios.get("http://localhost:8081/user/allPatient").then((value) => {
-        setUsers(value.data)
+      setUsers(value.data)
     }).catch((err) => {
-        console.log(err);
+      console.log(err);
     })
-}
+  }
 
 
 
@@ -39,17 +39,17 @@ useEffect(()=>{
   async function signinData(event) {
 
     event.preventDefault()
- 
-    if(!data.email && !data.password){
+
+    if (!data.email && !data.password) {
       toast.error("Form is empty !")
       //  alert("Form is empty !")
-    }else if (!data.email) {
+    } else if (!data.email) {
       toast.error("Please insert your email !")
       // alert("Please insert your email !")
     } else if (!data.password) {
       toast.error("Please insert your password !")
       // alert("Please insert your password !")
-    } 
+    }
     else if (data.password.length > 8) {
       toast.error("You are entering password characters over 8 characters !")
       // alert("You are entering password characters over 8 characters !");
@@ -57,27 +57,27 @@ useEffect(()=>{
       toast.error("You are entering password characters under 8 characters !")
       // alert("You are entering password characters under 8 characters !");
     }
-     else {
+    else {
       const result = await axios.post("http://localhost:8081/user/login", data)
-    
-       let condition = users.find((value) => value.email === result.data.email)
 
-       console.log("condition",condition);
+      let condition = users.find((value) => value.email === result.data.email)
+
+      console.log("condition", condition);
 
       // alert("success !")
 
       // const result = await axios.post("http://localhost:8081/user/login", data)
 
-         if (!condition) {
-          toast.error(`${result.data.msg}`)
-         }else{
-          toast.success("success !")
+      if (!condition) {
+        toast.error(`${result.data.msg}`)
+      } else {
+        toast.success("success !")
 
-          localStorage.setItem("uid", JSON.stringify(result.data))
+        localStorage.setItem("uid", JSON.stringify(result.data))
 
-          navigate("/patient-dashboard")
-      
-         }
+        navigate("/patient-dashboard")
+
+      }
 
     }
 
@@ -97,26 +97,34 @@ useEffect(()=>{
 
   return (
     <>
-    <ToastContainer/>
-      <h1 className="heading">Patient Signin</h1>
+      <ToastContainer />
 
-      <div className="container doc-log">
 
-        <form onSubmit={signinData}>
-          <div className="container doc-log-gridy">
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Email address</label>
-              <input type="email" name="email" value={email} onChange={(event) => { return setEmail(event.target.value) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+      <div className="doc-log">
+      <div id="log-img">
+          <img src="./images/login.jpeg" alt="" />
+        </div>
+
+        <div id="login-form">
+          <h1 className="heading">Patient Signin</h1>
+          <form onSubmit={signinData}>
+            <div className="container doc-log-gridy">
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Email address</label>
+                <img src="./images/email.png" alt="" id="email" />
+                <input type="email" name="email" value={email} onChange={(event) => { return setEmail(event.target.value) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">Password</label>
+                <img src="./images/password.png" alt="" id="password"/>
+                <input type="password" name="password" value={password} onChange={(event) => { return setPassword(event.target.value) }} className="form-control" id="exampleInputPassword1" placeholder="Password" />
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Password</label>
-              <input type="password" name="password" value={password} onChange={(event) => { return setPassword(event.target.value) }} className="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-          </div>
 
 
-          <button type="submit" className="btn doc-btn">Submit</button>
-        </form>
+            <button type="submit" className="btn doc-btn">LOGIN ACCOUNT</button>
+          </form>
+        </div>
       </div>
     </>
   )

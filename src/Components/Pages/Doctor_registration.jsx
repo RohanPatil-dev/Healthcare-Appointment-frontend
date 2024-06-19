@@ -134,64 +134,79 @@ export default function Doctor_registration() {
     <>
       <ToastContainer />
 
-      <h1 className="heading">Doctor Registration</h1>
 
-      <div className="container doc-registrastion">
-        <form onSubmit={signupData}>
-          <div className="doc-gridy">
-            <div className="form-group">
-              <label for="exampleInputname">Name</label>
-              <input type="text" name="name" value={name} onChange={(event) => { return setName(event.target.value) }} className="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter your Name............" />
+      <div className="doc-registrastion">
+
+        <div id="register-img">
+          <img src="./images/doc-medical.jpeg" alt="" />
+        </div>
+
+        <div id="register-form">
+          <h1 className="heading">Doctor Registration</h1>
+
+          <form onSubmit={signupData}>
+            <div className="doc-gridy">
+              <div className="form-group">
+                <label for="exampleInputname">Name</label>
+                <img src="./images/name.png" alt="" id="name" />
+                <input type="text" name="name" value={name} onChange={(event) => { return setName(event.target.value) }} className="form-control" id="exampleInputname" aria-describedby="emailHelp" placeholder="Enter your Name............" />
+              </div>
+
+              <div className="form-group">
+                <label for="exampleInputphoneNumber">PhoneNumber</label>
+                <img src="./images/phone.png" alt="" id="phone" />
+                <input type="tel" name="phoneNumber" value={phoneNumber} onChange={(event) => { return setPhoneNumber(event.target.value) }} className="form-control" id="exampleInputphoneNumber" placeholder="Enter your Number............." />
+              </div>
+
+              <div className="form-group">
+                <label for="exampleInputAge">Age</label>
+                <img src="./images/age.png" alt="" id="age" />
+                <input type="number" name="age" value={age} onChange={(event) => { return setAge(event.target.value) }} className="form-control" id="exampleInputAge" placeholder="Enter your Age............" />
+              </div>
+
+              <div className="form-group">
+                <label for="exampleInputemail">Email</label>
+                <img src="./images/email.png" alt="" id="emails" />
+                <input type="email" name="email" value={email} onChange={(event) => { return setEmail(event.target.value) }} className="form-control" id="exampleInputemail" aria-describedby="emailHelp" placeholder="Enter your email........" />
+              </div>
+
+              <div className="form-group">
+                <label for="exampleInputphoneNumber">Password</label>
+                <img src="./images/password.png" alt="" id="passwords" />
+                <input type="password" name="password" value={password} onChange={(event) => { return setPassword(event.target.value) }} className="form-control" id="exampleInputpassword" placeholder="Password" />
+              </div>
+
+              <div className="form-group">
+                <label for="exampleInputemail">Address</label>
+                <img src="./images/address.png" alt="" id="address" />
+                <input type="text" name="address" value={address} onChange={(event) => { return setAddress(event.target.value) }} className="form-control" id="exampleInputaddress" aria-describedby="emailHelp" placeholder="Enter your address............" />
+              </div>
+
+              <div className="form-group">
+                <label for="exampleInputcity">City</label>
+                <img src="./images/city.png" alt="" id="city" />
+                <input type="text" name="city" value={city} onChange={(event) => { return setCity(event.target.value) }} className="form-control" id="exampleInputcity" placeholder="Enter your city.........." />
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Specialist</label>
+                <select class="form-control" name="specialist" value={specialist} onChange={(event) => { return setSpecialist(event.target.value) }} id="exampleFormControlSelect1">
+                  <option>Cardiology</option>
+                  <option>Virology</option>
+                  <option>Dermatology</option>
+                  <option>Optometry</option>
+                </select>
+              </div>
             </div>
 
-            <div className="form-group">
-              <label for="exampleInputphoneNumber">PhoneNumber</label>
-              <input type="tel" name="phoneNumber" value={phoneNumber} onChange={(event) => { return setPhoneNumber(event.target.value) }} className="form-control" id="exampleInputphoneNumber" placeholder="Enter your Number............." />
+            <div className="form-check selection-btn">
+              <input className="form-check-input_1" type="checkbox" value={"Male"} name="male" id="male" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="male">Male</label>
+              <input className="form-check-input_2" type="checkbox" value={"Female"} name="female" id="female" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="female">Female</label>
             </div>
 
-            <div className="form-group">
-              <label for="exampleInputAge">Age</label>
-              <input type="number" name="age" value={age} onChange={(event) => { return setAge(event.target.value) }} className="form-control" id="exampleInputAge" placeholder="Enter your Age............" />
-            </div>
-
-            <div className="form-group">
-              <label for="exampleInputemail">Email</label>
-              <input type="email" name="email" value={email} onChange={(event) => { return setEmail(event.target.value) }} className="form-control" id="exampleInputemail" aria-describedby="emailHelp" placeholder="Enter your email........" />
-            </div>
-
-            <div className="form-group">
-              <label for="exampleInputphoneNumber">Password</label>
-              <input type="password" name="password" value={password} onChange={(event) => { return setPassword(event.target.value) }} className="form-control" id="exampleInputpassword" placeholder="Password" />
-            </div>
-
-            <div className="form-group">
-              <label for="exampleInputemail">Address</label>
-              <input type="text" name="address" value={address} onChange={(event) => { return setAddress(event.target.value) }} className="form-control" id="exampleInputaddress" aria-describedby="emailHelp" placeholder="Enter your address............" />
-            </div>
-
-            <div className="form-group">
-              <label for="exampleInputcity">City</label>
-              <input type="text" name="city" value={city} onChange={(event) => { return setCity(event.target.value) }} className="form-control" id="exampleInputcity" placeholder="Enter your city.........." />
-            </div>
-
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Specialist</label>
-              <select class="form-control" name="specialist" value={specialist} onChange={(event) => { return setSpecialist(event.target.value) }} id="exampleFormControlSelect1">
-                <option>Cardiology</option>
-                <option>Virology</option>
-                <option>Dermatology</option>
-                <option>Optometry</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="form-check selection-btn">
-            <input className="form-check-input_1" type="checkbox" value={"Male"} name="male" id="male" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="male">Male</label>
-            <input className="form-check-input_2" type="checkbox" value={"Female"} name="female" id="female" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="female">Female</label>
-          </div>
-
-          <button type="submit" className="btn doc-btn">Submit</button>
-        </form>
+            <button type="submit" className="btn doc-reg-btn">Submit</button>
+          </form>
+        </div>
       </div>
     </>
   )

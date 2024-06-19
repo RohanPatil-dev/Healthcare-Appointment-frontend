@@ -101,12 +101,14 @@ export default function Patient_login() {
 
 
       <div className="doc-log">
-      <div id="log-img">
+        <div id="log-img">
+          <h3>Mediactive <span>Healthcare</span></h3>
           <img src="./images/login.jpeg" alt="" />
         </div>
 
         <div id="login-form">
-          <h1 className="heading">Patient Signin</h1>
+          <h1 className="heading">Healthcare</h1>
+          <p>Welcome back ! please login to your account</p>
           <form onSubmit={signinData}>
             <div className="container doc-log-gridy">
               <div className="form-group">
@@ -116,7 +118,7 @@ export default function Patient_login() {
               </div>
               <div className="form-group">
                 <label htmlFor="exampleInputPassword1">Password</label>
-                <img src="./images/password.png" alt="" id="password"/>
+                <img src="./images/password.png" alt="" id="password" />
                 <input type="password" name="password" value={password} onChange={(event) => { return setPassword(event.target.value) }} className="form-control" id="exampleInputPassword1" placeholder="Password" />
               </div>
             </div>

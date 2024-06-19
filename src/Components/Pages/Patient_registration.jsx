@@ -131,28 +131,36 @@ export default function Patient_registration() {
         <>
             <ToastContainer/>
 
-            <h1 className="heading">Patient Registration</h1>
+            <div className="doc-registrastion">
+                <div id="register-img">
+                    <img src="./images/register_doct.jpeg" alt="" />
+                </div>
 
-            <div className="container doc-registrastion">
+                <div id="register-form">
+                <h1 className="heading">Patient Registration</h1>
                 <form onSubmit={signupData}>
                     <div className="doc-gridy">
                         <div className="form-group">
                             <label htmlFor="exampleInputname">Name</label>
+                             <img src="./images/name.png" alt="" id="name" />
                             <input type="text" value={name} className="form-control" id="exampleInputname" aria-describedby="emailHelp" onChange={(event) => { return setName(event.target.value) }} placeholder="Enter your Name............" />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="exampleInputphoneNumber">PhoneNumber</label>
+                            <img src="./images/phone.png" alt="" id="phone" />
                             <input type="tel" value={phoneNumber} className="form-control" id="exampleInputphoneNumber" onChange={(event) => { return setPhoneNumber(event.target.value) }} placeholder="Enter your Number............." />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="exampleInputAge">Age</label>
+                            <img src="./images/age.png" alt="" id="age" />
                             <input type="number" value={age} className="form-control" id="exampleInputAge" onChange={(event) => { return setAge(event.target.value) }} placeholder="Enter your Age............" />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="exampleInputdate">Date Of Birth</label>
+                            <img src="./images/birthdate.png" alt="" id="birthdate" />
                             <input type="date" value={DOB} className="form-control" min="2001-01-01" max="2024-06-11" id="exampleInputdate" onChange={(event) => { return setDOB(event.target.value) }} placeholder="Enter your Age............" />
                         </div>
 
@@ -170,16 +178,19 @@ export default function Patient_registration() {
 
                         <div className="form-group">
                             <label htmlFor="exampleInputemail">Email</label>
+                            <img src="./images/email.png" alt="" id="emails" />
                             <input type="email" value={email} className="form-control" id="exampleInputemail" onChange={(event) => { return setEmail(event.target.value) }} aria-describedby="emailHelp" placeholder="Enter your email........" />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="exampleInputphoneNumber">Password</label>
+                            <img src="./images/password.png" alt="" id="passwords" />
                             <input type="password" value={password} className="form-control" id="exampleInputpassword" onChange={(event) => { return setPassword(event.target.value) }} placeholder="Password" />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="exampleInputemail">Address</label>
+                            <img src="./images/address.png" alt="" id="address" />
                             <input type="text" value={address} className="form-control" id="exampleInputaddress" onChange={(event) => { return setAddress(event.target.value) }} aria-describedby="emailHelp" placeholder="Enter your address............" />
                         </div>
 
@@ -190,8 +201,9 @@ export default function Patient_registration() {
                         <input className="form-check-input_2" type="checkbox" value={"Female"} name="female" id="female" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="female">Female</label>
                     </div>
 
-                    <button type="submit" className="btn doc-btn">Submit</button>
+                    <button type="submit" className="btn doc-reg-btn">Register</button>
                 </form>
+                </div>
             </div>
         </>
     )

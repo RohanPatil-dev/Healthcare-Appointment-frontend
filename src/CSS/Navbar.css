@@ -1,34 +1,34 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.navbar{
+.navbar {
     background-color: #007aa5;
     font-weight: 600;
     font-style: italic;
 }
 
-.Logo_name{
+.Logo_name {
     font-size: 30px;
 }
 
-.link-name{
+.link-name {
     font-size: 20px;
     font-style: oblique;
 }
 
-.link-name:hover{
+.link-name:hover {
     background-color: red;
     border-radius: 30px;
 }
 
-.nav-inner-container{
+.nav-inner-container {
     margin-left: 480px;
 }
 
-.img{
+.img {
     position: relative;
     left: 40px;
     height: 70px;
@@ -37,63 +37,168 @@
 
 /* doctor registration */
 
-.doc-registrastion{
-    margin-top: 50px;
+.doc-registrastion {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-top: 20px;
     font-size: 23px;
     font-weight: 600;
+    justify-content: space-evenly;
 }
 
-.form-check-input_1,.form-check-input_2{
+#register-img img {
+    position: relative;
+    bottom: 20px;
+    height: 700px;
+    width: 510px;
+}
+
+#register-form {
+    margin-right: 200px;
+    width: 60rem;
+    padding-left: 50px;
+}
+
+#name {
+    position: relative;
+    top: 45px;
+    right: 50px;
+    height: 40px;
+}
+
+
+#age {
+    position: relative;
+    top: 45px;
+    right: 30px;
+    height: 35px;
+}
+
+#birthdate {
+    position: relative;
+    top: 45px;
+    right: 120px;
+    height: 30px;
+}
+
+#emails {
+    position: relative;
+    top: 45px;
+    right: 40px;
+    height: 30px;
+}
+
+#passwords {
+    position: relative;
+    top: 45px;
+    right: 80px;
+    height: 30px;
+}
+
+#address {
+    position: relative;
+    top: 45px;
+    right: 65px;
+    height: 30px;
+}
+
+#phone {
+    position: relative;
+    top: 45px;
+    right: 135px;
+    height: 30px;
+}
+
+#city {
+    position: relative;
+    top: 45px;
+    right: 20px;
+    height: 30px;
+}
+
+.doc-gridy .form-group select {
+    width: 400px;
+    border-radius: 20px;
+}
+
+.form-check-input_1,
+.form-check-input_2 {
     accent-color: rgba(30, 163, 30, 0.598);
     width: 20px;
     height: 20px;
 }
 
-.form-check-input_2{
+.form-check-input_2 {
     margin-left: 30px;
 }
 
-.selection-btn{
-    margin-left: 430px;
+.selection-btn {
+    margin-left: 330px;
 }
 
-.doc-gridy{
+.doc-gridy {
     display: grid;
     grid-template-columns: auto auto;
-    gap: 20px 20px;
+    gap: 10px 10px;
 }
 
-.doc-btn{
+.doc-gridy .form-group input {
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 70px;
+    width: 400px;
+    font-size: 18px;
+}
+
+.doc-gridy .form-group input::placeholder{
+   color: purple;
+   font-size: 20px;
+}
+
+
+.doc-btn {
     margin-top: 10px;
     height: 50px;
     width: 400px;
     font-size: 25px;
     font-weight: bold;
     border-radius: 12px;
-    margin-left: 80px;
+    margin-left: 85px;
     color: white;
     background-color: rgb(202, 58, 202);
     margin-bottom: 50px;
 }
 
+.doc-reg-btn {
+    margin-top: 10px;
+    height: 50px;
+    width: 400px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 12px;
+    margin-left: 240px;
+    color: white;
+    background-color: rgb(202, 58, 202);
+    margin-bottom: 50px;
+}
 
 /* login */
 
-.doc-log-gridy{
+.doc-log-gridy {
     margin-left: 70px;
     margin-top: 50px;
 }
 
 .doc-log-gridy .form-group input {
-   width: 400px;
+    width: 400px;
 }
 
-.doc-log-gridy label{
-     font-size: 20px;
-     font-weight: 600;
+.doc-log-gridy label {
+    font-size: 20px;
+    font-weight: 600;
 }
 
-.doc-log{
+.doc-log {
     margin-top: 70px;
     display: grid;
     grid-template-columns: auto auto;
@@ -101,33 +206,57 @@
     align-items: center;
 }
 
-#login-form{
+#login-form {
     padding: 20px;
     width: 600px;
     margin-right: 100px;
     box-shadow: 0px 3px 10px 5px gray;
 }
 
-#log-img{
+#log-img {
     margin-left: 60px;
 }
 
-#doc-img{
+#log-img h3 {
+    text-align: center;
+    color: gray;
+    letter-spacing: 10px;
+}
+
+#log-img h3 span {
+    color: aqua;
+    font-weight: bolder;
+}
+
+#doc-img {
     height: 500px;
 }
 
+#login-form h1,
+p {
+    text-align: center;
+    color: gray;
+}
+
+#login-form h1 {
+    letter-spacing: 10px;
+}
+
+
+
+
 /* patient-dashboard */
-.patient-dashboard{
+.patient-dashboard {
     margin-top: 100px;
 }
 
-.patient-btn-div{
+.patient-btn-div {
     position: relative;
     top: 60px;
     left: 280px;
 }
 
-.patient-btn{
+.patient-btn {
     height: 50px;
     width: 150px;
     box-shadow: 0px 6px 4px 3px gray;
@@ -138,42 +267,43 @@
 
 /* modal */
 
-.modal-body{
+.modal-body {
     display: grid;
     grid-template-columns: auto auto;
     gap: 30px 30px;
 }
 
-.select{
+.select {
     margin-left: 20px;
 }
 
-td,th{
-  font-size: 25px;
+td,
+th {
+    font-size: 25px;
 }
 
-.action{
+.action {
     box-shadow: 0px 2px 8px 5px gray;
     font-size: 20px;
 }
 
-.heading{
+.heading {
     text-align: center;
-    margin-top: 30px;
-    font-size: 50px;
+    margin-bottom: 30px;
+    font-size: 40px;
     font-weight: bold;
     font-style: italic;
-
+    color:#007aa5;
 }
 
-#email{
+#email {
     position: relative;
     height: 30px;
     top: 40px;
     right: 110px;
 }
 
-#password{
+#password {
     position: relative;
     height: 30px;
     top: 40px;
@@ -182,14 +312,14 @@ td,th{
 
 /* nav dashboard */
 
-.link-value{
-   margin-left: 66rem;
+.link-value {
+    margin-left: 66rem;
 }
 
 
 /* delete btn */
 
-.delete-btn{
+.delete-btn {
     background-color: #007aa5;
     color: white;
     border-radius: 10px;
@@ -198,13 +328,14 @@ td,th{
 }
 
 
-.form-group input{
+.doc-log-gridy .form-group input {
     border-radius: 20px;
     padding: 10px;
     padding-left: 70px;
+    font-size: 18px;
 }
 
-.form-group input::placeholder{
+.doc-log-gridy .form-group input::placeholder {
     font-size: 20px;
     color: purple;
 }

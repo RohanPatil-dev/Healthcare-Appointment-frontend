@@ -102,6 +102,7 @@ export default function Doctor_signin() {
 
         <div id="login-form">
           <h1 className="heading">Doctor Signin</h1>
+          <p>Welcome back doctor ! please login to your account</p>
           <form onSubmit={signinData}>
             <div className="container doc-log-gridy">
               <div className="form-group">
@@ -111,13 +112,13 @@ export default function Doctor_signin() {
               </div>
               <div className="form-group">
                 <label htmlFor="exampleInputPassword1">Password</label>
-                <img src="./images/password.png" alt="" id="password"/>
+                <img src="./images/password.png" alt="" id="password" />
                 <input type="password" name="password" value={password} onChange={(event) => { return setPassword(event.target.value) }} className="form-control" id="exampleInputPassword1" placeholder="Password" />
               </div>
             </div>
 
 
-            <button type="submit" className="btn doc-btn">Submit</button>
+            <button type="submit" className="btn doc-btn">LOGIN ACCOUNT</button>
           </form>
         </div>
       </div>

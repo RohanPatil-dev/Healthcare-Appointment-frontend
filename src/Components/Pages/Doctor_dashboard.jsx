@@ -116,8 +116,8 @@ export default function Doctor_dashboard() {
 
             <Nav_dashboard />
             <div className="container patient-dashboard text-center">
-                <table className="table table-dark ">
-                    <thead>
+                <table className="table table-bordered table-striped" style={{width : "60rem",marginLeft : "50px"}}>
+                    <thead className="bg-dark text-light">
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Patient</th>
@@ -131,12 +131,12 @@ export default function Doctor_dashboard() {
                         {appointments && appointments.map((data, index) => {
                             return (
                                 <>
-                                    <tr key={index + 1}>
+                                    <tr key={index + 1} className="table-row">
                                         <th scope="row">{index + 1}</th>
                                         <th scope="row">{getPatientName(data.patientId)}</th>
                                         <td className="doc">{data.date}</td>
                                         <td className="doc">{data.status}</td>
-                                        <td><button className="btn btn-primary action" onClick={()=>{getDoctor(data)}} data-toggle="modal" data-target="#doctorModal">Status</button></td>
+                                        <td><button className="btn btn-primary action" onClick={()=>{getDoctor(data)}} data-toggle="modal" data-target="#doctorModal">Change Status</button></td>
                                     </tr>
                                 </>
                             )

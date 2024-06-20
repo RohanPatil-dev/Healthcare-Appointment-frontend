@@ -135,7 +135,7 @@
 }
 
 .register-image{
-    height : 42.8rem;
+    height : 44.9rem;
     width: 45rem;
 }
 
@@ -279,10 +279,20 @@
 
 }
 
+.table-row:hover{
+    color: black;
+    font-weight: bold;
+ }
+ 
+ .table-body{
+     overflow: auto;
+     height: 200px;
+ }
+
 
 /* modal */
 
-.modal-body {
+.body-modal {
     display: grid;
     grid-template-columns: auto auto;
     gap: 30px 30px;
@@ -290,12 +300,6 @@
 
 .select {
     margin-left: 20px;
-}
-
-.table-row:hover{
-   background-color: #007aa5;
-   color: black;
-   font-weight: bold;
 }
 
 td,
@@ -306,6 +310,10 @@ th {
 .action {
     box-shadow: 0px 2px 8px 5px gray;
     font-size: 20px;
+}
+
+.action:hover{
+    background-color: rgb(29, 210, 29);
 }
 
 .heading {
@@ -330,20 +338,35 @@ th {
     left : 20px;
 }
 
-.date-modal{
-    margin-right: 30px;
-    padding: 10px;
-}
-
-.date-modal:focus{
-    outline-color : skyblue;
-}
-
-.modal-footer button{
+#date-modal{
     position: relative;
-    left: 70px;
+    right: 20px;
+    border: 1px solid gray;
+    width: 170px;
+    border-radius: 5px;
 }
 
+#date-modal:hover{
+    outline : 1px solid skyblue;
+}
+
+.footer-modal button{
+    position: relative;
+    left: 85px;
+}
+
+.close-modal{
+    width: 100px;
+}
+
+.doctor-modal option:hover{
+   background-color: red;
+}
+
+.text{
+    position: relative;
+    top: 3px;
+}
 
 /* nav dashboard */
 
@@ -359,6 +382,11 @@ th {
     color: white;
     border-radius: 10px;
     border: none;
+    font-weight: bold;
+}
+
+.delete-btn:hover{
+    background-color: rgb(227, 54, 88);
 }
 
 .delete-btn img{

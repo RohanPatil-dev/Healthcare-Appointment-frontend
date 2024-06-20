@@ -30,13 +30,12 @@ export default function Sidebar(props) {
 
                         <ul className="nav_list">
                             <li className="text-light user-info">
-                                <img src="./images/user.png" alt="" class="icons" />{local.name.length > 20 ? local.name.toString().slice(0,10)+"...." : local.name}
+                                <img src="./images/user.png" alt="" class="icons" /><span className="text">{!(local.name.length <= 15) ? String(local.name).slice(0,10)+"..." : local.name}</span>
                             </li>
 
-                            <li className="text-light user-info"> <img src="./images/contact.png" alt="" class="icons" />{local.phoneNumber}</li>
+                            <li className="text-light user-info"> <img src="./images/contact.png" alt="" class="icons" /><span className="text">{local.phoneNumber}</span></li>
 
-                            <li className="text-light user-info"> <img src="./images/ages.png" alt="" class="icons" />{local.age} <span>years old</span></li>
-
+                            <li className="text-light user-info"> <img src="./images/ages.png" alt="" class="icons" /><span className="text">{local.age}</span> <span className="text">years old</span></li>
 
                             <li>
                                 <Link className="user-info" style={{ position: "relative", right: "16px" }} onClick={() => { logout() }} to="/">

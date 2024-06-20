@@ -133,14 +133,13 @@ export default function Patient_dashboard() {
       <Nav_dashboard />
 
       <div>
-
         <div>
           <div className="patient-btn-div">
             <button className="btn patient-btn" data-toggle="modal" data-target="#exampleModal">Add Appointment</button>
           </div>
 
           <div className="container patient-dashboard text-center">
-            <table className="table table-bordered">
+            <table className="table table-bordered table-striped" style={{width : "65rem",marginLeft : "30px"}}>
               <thead className="bg-dark text-light">
                 <tr>
                   <th scope="col">ID</th>
@@ -150,7 +149,7 @@ export default function Patient_dashboard() {
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="table-body">
                 {appointment && appointment.map((data, index) => {
                   return (
                     <>

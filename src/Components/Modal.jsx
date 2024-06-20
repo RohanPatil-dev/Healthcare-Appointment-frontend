@@ -1,7 +1,13 @@
 import React from "react"
 
-import { Select } from "antd"
+import { Select,DatePicker, Space  } from "antd"
 const { Option } = Select;
+
+const { RangePicker } = DatePicker;
+
+const onOk = (value) => {
+  console.log('onOk: ', value);
+};
 
 export default function Modal(props) {
 
@@ -19,7 +25,7 @@ export default function Modal(props) {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body">
+            <div className="modal-body body-modal">
               <div>
                 <Select style={{ width: 200 }} name="doctorId" className="select select-modal" value={props.doctorId} onChange={(value) => { return props.setDoctorId(value) }} placeholder="Select an Option.....">
 
@@ -38,11 +44,11 @@ export default function Modal(props) {
                 </Select>
               </div>
 
-              <input type="date" name="date" id="" value={props.date} onChange={(event) => { return props.setDate(event.target.value) }} />
+              <input type="date" name="date" id="date-modal" value={props.date} onChange={(event) => { return props.setDate(event.target.value) }} />
 
-              <div class="modal-footer">
+              <div class="modal-footer footer-modal">
                 <button type="button" class="btn btn-success" onClick={() => { props.btn() }}>Save Appointment</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
               {/* <div>
                 <button className="btn btn-primary" onClick={()=>{props.btn()}}>Submit</button>

@@ -106,19 +106,15 @@ export default function Doctor_signin() {
           <form onSubmit={signinData}>
             <div className="container doc-log-gridy">
               <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Email address</label>
                 <img src="./images/email.png" alt="" id="email" />
                 <input type="email" name="email" value={email} onChange={(event) => { return setEmail(event.target.value) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="exampleInputPassword1">Password</label>
+
                 <img src="./images/password.png" alt="" id="password" />
                 <input type="password" name="password" value={password} onChange={(event) => { return setPassword(event.target.value) }} className="form-control" id="exampleInputPassword1" placeholder="Password" />
               </div>
+
+              <button type="submit" className="btn btn-primary doc-btn">LOGIN ACCOUNT</button>
             </div>
-
-
-            <button type="submit" className="btn doc-btn">LOGIN ACCOUNT</button>
           </form>
         </div>
       </div>

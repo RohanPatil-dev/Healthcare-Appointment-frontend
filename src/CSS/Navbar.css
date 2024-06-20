@@ -4,24 +4,15 @@
     box-sizing: border-box;
 }
 
-.navbar {
-    background-color: #007aa5;
-    font-weight: 600;
-    font-style: italic;
-}
 
-.Logo_name {
-    font-size: 30px;
-}
-
-.link-name {
+.navbar{
     font-size: 20px;
-    font-style: oblique;
+    box-shadow: 0px 6px 15px 0px rgb(234, 229, 229);
+    font-weight: 600;
 }
 
-.link-name:hover {
-    background-color: red;
-    border-radius: 30px;
+.Logo_name{
+    font-size: 25px;
 }
 
 .nav-inner-container {
@@ -123,14 +114,14 @@
     height: 30px;
 }
 
-.doc-gridy .form-group select {
-    width: 400px;
+
+.doc-gridy .form-group select,.doc-gridy .form-group input {
     border-radius: 20px;
 }
 
 .form-check-input_1,
 .form-check-input_2 {
-    accent-color: rgba(30, 163, 30, 0.598);
+    accent-color: green;
     width: 20px;
     height: 20px;
 }
@@ -140,40 +131,50 @@
 }
 
 .selection-btn {
-    margin-left: 330px;
+    margin-left: 180px;
 }
 
-.doc-gridy {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 10px 10px;
+.register-image{
+    height : 42.8rem;
+    width: 45rem;
 }
 
-.doc-gridy .form-group input {
-    border-radius: 20px;
-    padding: 10px;
-    padding-left: 70px;
+.register-btn{
+    position: relative;
+    left: 100px;
     width: 400px;
-    font-size: 18px;
+    top: 10px;
+    font-size: 20px;
+    border-radius: 20px;
+    background-color: rgb(213, 102, 213);
 }
 
-.doc-gridy .form-group input::placeholder{
-   color: purple;
-   font-size: 20px;
+.register-div{
+    box-shadow: 0px 0px 4px 3px rgb(234, 229, 229);
 }
 
 
 .doc-btn {
-    margin-top: 10px;
-    height: 50px;
     width: 400px;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     border-radius: 12px;
-    margin-left: 85px;
     color: white;
-    background-color: rgb(202, 58, 202);
+    background-color: rgb(213, 102, 213);
     margin-bottom: 50px;
+}
+
+.input{
+    border-radius: 20px;
+    padding: 8px;
+    padding-left: 70px;
+    font-size: 15px;
+}
+
+
+.input::placeholder{
+    color: purple;
+    font-size: 15px;
 }
 
 .doc-reg-btn {
@@ -193,7 +194,7 @@
 
 .doc-log-gridy {
     margin-left: 70px;
-    margin-top: 50px;
+   
 }
 
 .doc-log-gridy .form-group input {
@@ -217,7 +218,7 @@
     padding: 20px;
     width: 600px;
     margin-right: 100px;
-    box-shadow: 0px 3px 10px 5px gray;
+    box-shadow: 0px 3px 10px 5px rgb(214, 211, 211);
 }
 
 #log-img {
@@ -239,17 +240,17 @@
     height: 500px;
 }
 
-#login-form h1,
-p {
+#login-form p {
     text-align: center;
     color: gray;
 }
 
-#login-form h1 {
-    letter-spacing: 10px;
+.message{
+    position: relative;
+    bottom: 20px;
+    color: gray;
+    text-align: center;
 }
-
-
 
 
 /* patient-dashboard */
@@ -266,7 +267,7 @@ p {
 
 .patient-btn {
     height: 50px;
-    width: 150px;
+    width: 200px;
     box-shadow: 0px 6px 4px 3px gray;
     background-color: rgb(203, 37, 37);
     font-size: 20px;
@@ -312,23 +313,37 @@ th {
     margin-bottom: 30px;
     font-size: 40px;
     font-weight: bold;
-    font-style: italic;
-    color:#007aa5;
+    color:rgb(48, 68, 215);
 }
 
 #email {
     position: relative;
-    height: 30px;
-    top: 40px;
-    right: 110px;
+    height: 25px;
+    top: 35px;
+    left : 20px;
 }
 
 #password {
     position: relative;
-    height: 30px;
-    top: 40px;
-    right: 70px;
+    height: 25px;
+    top: 35px;
+    left : 20px;
 }
+
+.date-modal{
+    margin-right: 30px;
+    padding: 10px;
+}
+
+.date-modal:focus{
+    outline-color : skyblue;
+}
+
+.modal-footer button{
+    position: relative;
+    left: 70px;
+}
+
 
 /* nav dashboard */
 
@@ -343,12 +358,12 @@ th {
     background-color: #007aa5;
     color: white;
     border-radius: 10px;
-    box-shadow: 0px 6px 6px 4px white;
     border: none;
 }
 
 .delete-btn img{
     height: 30px;
+    margin-right: 10px;
 }
 
 .doc-log-gridy .form-group input {
@@ -362,3 +377,110 @@ th {
     font-size: 20px;
     color: purple;
 }
+
+
+
+/* sidebar */
+
+#dashboard_name {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 30px;
+  color: white;
+  font-style: italic;
+  font-weight: 600;
+  text-shadow: 0px 0px 10px white;
+}
+
+.sidebar {
+  position: absolute;
+  top: 89px;
+  left: 0;
+  background : #00308F;
+  height: 91%;
+  width: 0;
+  transition: all 0.5s ease;
+}
+
+.sidebar-setting {
+  height: 95%;
+}
+
+.sidebar-write_appointment {
+  height: 92%;
+}
+
+.sidebar.active {
+  width: 250px;
+}
+
+.sidebar .logo_content .logo {
+  color: #fff;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+}
+
+.logo_content {
+  display: none;
+}
+
+.sidebar.active .logo_content {
+  display: inline-block;
+}
+
+#pop_up {
+  position: absolute;
+  right: 40px;
+  top: 20px;
+}
+
+.sidebar ul {
+  margin-top: 130px;
+  list-style-type: none;
+  display: none;
+  opacity: 0;
+}
+
+.sidebar.active ul {
+  display: inline-block;
+  opacity: 1;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+  margin-left: 20px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.icons {
+  height: 30px;
+  margin-right: 20px;
+}
+
+
+.user-info{
+    font-size: 20px;
+    padding: 6px;
+}
+
+.nav_list{
+    margin-left: 20px;
+    position: relative;
+    bottom: 100px;
+}
+
+.nav_list li{
+    font-weight: bold;
+}
+
+.nav_list li:hover{
+    transform: scale(1.1);
+}
+

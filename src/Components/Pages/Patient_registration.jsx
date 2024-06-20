@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from "react"
+import React, { useState, useEffect } from "react"
 
-import {ToastContainer,toast} from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 
 import axios from "axios"
@@ -24,8 +24,8 @@ export default function Patient_registration() {
 
     const [users, setUsers] = useState([])
 
-    useEffect(()=>{
-      allPatients()
+    useEffect(() => {
+        allPatients()
     })
 
     function allPatients() {
@@ -50,17 +50,17 @@ export default function Patient_registration() {
 
     function signupData(event) {
 
-        <ToastContainer/>
+        <ToastContainer />
 
         event.preventDefault()
 
         if (!data.name && !data.phoneNumber && !data.gender && !data.age && !data.DOB && !data.bloodGroup && !data.email && !data.password && !data.address) {
             toast.error("Form is empty !")
             // alert("Form is empty !");
-        }else if (!data.name) {
+        } else if (!data.name) {
             toast.error("Please insert your Name !")
             // alert("Please insert your Name !");
-        }  else if (!data.phoneNumber) {
+        } else if (!data.phoneNumber) {
             toast.error("Please insert your phoneNumber !")
             // alert("Please insert your phoneNumber !");
         } else if (data.phoneNumber.length > 10) {
@@ -102,16 +102,16 @@ export default function Patient_registration() {
 
             let condition = users.find((value) => value.email === data.email)
 
-            if(condition){
+            if (condition) {
                 toast.error("Email is already exist !")
-            }else{
+            } else {
                 toast.success("Success !")
                 navigate("/")
             }
-            
+
             // alert("Success !")
 
-         
+
             // .then(data => {
             //     // localStorage.setItem("uid",JSON.stringify(data.data)),
             //     console.log(data)
@@ -129,80 +129,79 @@ export default function Patient_registration() {
 
     return (
         <>
-            <ToastContainer/>
+            <ToastContainer />
 
-            <div className="doc-registrastion">
-                <div id="register-img">
-                    <img src="./images/register_doct.jpeg" alt="" />
-                </div>
-
-                <div id="register-form">
-                <h1 className="heading">Patient Registration</h1>
-                <form onSubmit={signupData}>
-                    <div className="doc-gridy">
-                        <div className="form-group">
-                            <label htmlFor="exampleInputname">Name</label>
-                             <img src="./images/name.png" alt="" id="name" />
-                            <input type="text" value={name} className="form-control" id="exampleInputname" aria-describedby="emailHelp" onChange={(event) => { return setName(event.target.value) }} placeholder="Enter your Name............" />
+            <div className="registration-container">
+                <div className="row no-gutters">
+                    <div className="col-md-6">
+                        <div className="image-container">
+                            <img src="./images/register_doct.jpeg" alt="Left Image" className="register-image" />
                         </div>
-
-                        <div className="form-group">
-                            <label htmlFor="exampleInputphoneNumber">PhoneNumber</label>
-                            <img src="./images/phone.png" alt="" id="phone" />
-                            <input type="tel" value={phoneNumber} className="form-control" id="exampleInputphoneNumber" onChange={(event) => { return setPhoneNumber(event.target.value) }} placeholder="Enter your Number............." />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="exampleInputAge">Age</label>
-                            <img src="./images/age.png" alt="" id="age" />
-                            <input type="number" value={age} className="form-control" id="exampleInputAge" onChange={(event) => { return setAge(event.target.value) }} placeholder="Enter your Age............" />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="exampleInputdate">Date Of Birth</label>
-                            <img src="./images/birthdate.png" alt="" id="birthdate" />
-                            <input type="date" value={DOB} className="form-control" min="2001-01-01" max="2024-06-11" id="exampleInputdate" onChange={(event) => { return setDOB(event.target.value) }} placeholder="Enter your Age............" />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="exampleFormControlSelect1">Blood Group</label>
-                            <select className="form-control" id="exampleFormControlSelect1" value={bloodGroup} onChange={(event) => { return setBloodGroup(event.target.value) }} >
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                            </select>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="exampleInputemail">Email</label>
-                            <img src="./images/email.png" alt="" id="emails" />
-                            <input type="email" value={email} className="form-control" id="exampleInputemail" onChange={(event) => { return setEmail(event.target.value) }} aria-describedby="emailHelp" placeholder="Enter your email........" />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="exampleInputphoneNumber">Password</label>
-                            <img src="./images/password.png" alt="" id="passwords" />
-                            <input type="password" value={password} className="form-control" id="exampleInputpassword" onChange={(event) => { return setPassword(event.target.value) }} placeholder="Password" />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="exampleInputemail">Address</label>
-                            <img src="./images/address.png" alt="" id="address" />
-                            <input type="text" value={address} className="form-control" id="exampleInputaddress" onChange={(event) => { return setAddress(event.target.value) }} aria-describedby="emailHelp" placeholder="Enter your address............" />
-                        </div>
-
                     </div>
+                    <div className="col-md-6" style={{ position: "relative", bottom: "30px", right: "300px" }}>
+                        <div className="login d-flex align-items-center py-5" style={{ width: "80rem" }}>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-lg-10 col-xl-7 mx-auto">
+                                        <div className="card shadow-lg p-4 register-div">
+                                            <h1 className="heading">Patient Registration</h1>
+                                            <p className="message">Welcome ! please create your new account</p>
+                                            <form onSubmit={signupData}>
+                                                <div className="doc-gridy">
+                                                    <div className="form-group">
+                                                        <input type="text" value={name} className="form-control" id="exampleInputname" aria-describedby="emailHelp" onChange={(event) => { return setName(event.target.value) }} placeholder="Enter your Name............" />
+                                                    </div>
 
-                    <div className="form-check selection-btn">
-                        <input className="form-check-input_1" type="checkbox" value={"Male"} name="male" id="male" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="male">Male</label>
-                        <input className="form-check-input_2" type="checkbox" value={"Female"} name="female" id="female" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="female">Female</label>
+                                                    <div className="form-group">
+                                                        <input type="tel" value={phoneNumber} className="form-control" id="exampleInputphoneNumber" onChange={(event) => { return setPhoneNumber(event.target.value) }} placeholder="Enter your Number............." />
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <input type="number" value={age} className="form-control" id="exampleInputAge" onChange={(event) => { return setAge(event.target.value) }} placeholder="Enter your Age............" />
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <input type="date" value={DOB} className="form-control" min="2001-01-01" max="2024-06-11" id="exampleInputdate" onChange={(event) => { return setDOB(event.target.value) }} placeholder="Enter your Age............" />
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <select className="form-control" id="exampleFormControlSelect1" value={bloodGroup} onChange={(event) => { return setBloodGroup(event.target.value) }} style={{width : "39rem"}}>
+                                                            <option value="AB+">AB+</option>
+                                                            <option value="AB-">AB-</option>
+                                                            <option value="A+">A+</option>
+                                                            <option value="A-">A-</option>
+                                                            <option value="O+">O+</option>
+                                                            <option value="O-">O-</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <input type="email" value={email} className="form-control" id="exampleInputemail" onChange={(event) => { return setEmail(event.target.value) }} aria-describedby="emailHelp" placeholder="Enter your email........" />
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <input type="password" value={password} className="form-control" id="exampleInputpassword" onChange={(event) => { return setPassword(event.target.value) }} placeholder="Password" />
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <input type="text" value={address} className="form-control" id="exampleInputaddress" onChange={(event) => { return setAddress(event.target.value) }} aria-describedby="emailHelp" placeholder="Enter your address............" />
+                                                    </div>
+
+                                                </div>
+
+                                                <div className="form-check selection-btn">
+                                                    <input className="form-check-input_1" type="checkbox" value={"Male"} name="male" id="male" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="male" style={{fontSize : "20px"}}>Male</label>
+                                                    <input className="form-check-input_2" type="checkbox" value={"Female"} name="female" id="female" onChange={(event) => { return setGender(event.target.value) }} /> <label htmlFor="female"  style={{fontSize : "20px"}}>Female</label>
+                                                </div>
+
+                                                <button type="submit" className="btn btn-primary register-btn">REGISTER ACCOUNT</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <button type="submit" className="btn doc-reg-btn">Register</button>
-                </form>
                 </div>
             </div>
         </>

@@ -1,39 +1,35 @@
-import React from "react"
+import React,{useState} from "react"
 
-import { Link,useNavigate } from "react-router-dom"
+import Sidebar from "./Sidebar";
 
 export default function Nav_dashboard() {
 
-    const navigate = useNavigate()
+    const [sidebar, setSidebar] = useState(false);
 
-    const auth = localStorage.getItem("uid")
-
-    const logout = () =>{
-        localStorage.removeItem("uid")
-
-        navigate("/")
-    }
-    
-
-
+    const showSidebar = () => {return setSidebar(!sidebar)}
+  
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark  p-2">
+            <nav className="navbar navbar-expand-lg navbar-light  p-2">
                 <img src="./images/Template.png" className="img" alt="" />
-                <Link className="navbar-brand Logo_name ml-5" href="#">Mediactive</Link>
+                <p className="navbar-brand Logo_name ml-5" href="#">Mediactive</p>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto link-value">
-                        <li className="nav-item active">
+                        {/* <li className="nav-item active">
                          <Link className="nav-link link-name" onClick={()=>{logout()}} to="/">Logout</Link>
-                        </li>
+                        </li> */}
                     </ul>
 
                 </div>
+
+                <button type="button" className="btn btn-info" id="pop_up" onClick={showSidebar}><img src="./images/menu-line.png" alt="" /> </button>
             </nav>
+
+            <Sidebar showSidebar={showSidebar} sidebar={sidebar} />
         </>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import {ToastContainer,toast} from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 
 import Nav_dashboard from "./Nav_dashboard";
@@ -83,10 +83,10 @@ export default function Patient_dashboard() {
     if (doctorId === "") {
       toast.error("Select your doctor !")
       //  alert("Select your doctor !")
-    }else if(date === ""){
+    } else if (date === "") {
       toast.error("Select your appointment Date !")
       // alert("Select your appointment Date !")
-    }else{
+    } else {
       toast.success("Appointment added successfully !")
       // alert("success !")
 
@@ -98,7 +98,7 @@ export default function Patient_dashboard() {
         console.log(err);
         console.log("err");
       })
-  
+
     }
   }
 
@@ -126,43 +126,57 @@ export default function Patient_dashboard() {
   return (
     <>
 
-<ToastContainer/>
+      <ToastContainer />
 
       <Modal btn={postAppointment} doctors={doctors} date={date} setDate={setDate} doctorId={doctorId} setDoctorId={setDoctorId} />
 
       <Nav_dashboard />
 
-      <div className="patient-btn-div">
-        <button className="btn patient-btn" data-toggle="modal" data-target="#exampleModal">Button</button>
-      </div>
+      <div>
+        <div class="w3-sidebar w3-bar-block header" style={{width:"15%",border : "2px solid black"}}>
+          <h2 class="w3-bar-item ">Patients details</h2>
+          <p>Name : <span>{local.name}</span></p>
+          <p>Email :  <span>{local.email}</span></p>
+          <p>Age : <span>{local.age}</span></p>
+          <p>Contact : <span>{local.phoneNumber}</span></p>
+          <p>Gender : <span>{local.gender}</span></p>
+          <p>Blood group : <span>{local.bloodGroup}</span></p>
+        </div>
 
-      <div className="container patient-dashboard text-center">
-        <table className="table table-dark ">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Doctor Name</th>
-              <th scope="col">Date</th>
-              <th scope="col">Status</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {appointment && appointment.map((data, index) => {
-              return (
-                <>
-                  <tr key={index + 1}>
-                    <td>{index + 1}</td>
-                    <td>{getDocName(data.doctorId)}</td>
-                    <td>{data.date}</td>
-                    <td>{data.status}</td>
-                    <td><button className="delete-btn" onClick={() => { deleteAppointment(data._id) }}>Delete</button></td>
-                  </tr>
-                </>
-              )
-            })}
-          </tbody>
-        </table>
+        <div>
+          <div className="patient-btn-div">
+            <button className="btn patient-btn" data-toggle="modal" data-target="#exampleModal">Button</button>
+          </div>
+
+          <div className="container patient-dashboard text-center">
+            <table className="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Doctor Name</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {appointment && appointment.map((data, index) => {
+                  return (
+                    <>
+                      <tr key={index + 1} className="table-row">
+                        <td>{index + 1}</td>
+                        <td>{getDocName(data.doctorId)}</td>
+                        <td>{data.date}</td>
+                        <td>{data.status}</td>
+                        <td><a className="btn delete-btn text-light" style={{ fontSize: "20px" }} onClick={() => { deleteAppointment(data._id) }}> <img src="./images/delete.png" alt="" /> Delete</a></td>
+                      </tr>
+                    </>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </>
   )

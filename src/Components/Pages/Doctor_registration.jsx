@@ -137,7 +137,7 @@ export default function Doctor_registration() {
 
       <div className="doc-registrastion">
 
-        <div id="register-img">
+        <div id="register-doc-img">
           <img src="./images/doc-medical.jpeg" alt="" />
         </div>
 

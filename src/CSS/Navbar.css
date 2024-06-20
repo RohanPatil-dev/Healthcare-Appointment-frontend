@@ -53,6 +53,13 @@
     width: 510px;
 }
 
+#register-doc-img img{
+    position: relative;
+    bottom: 20px;
+    height: 650px;
+    width: 500px;
+}
+
 #register-form {
     margin-right: 200px;
     width: 60rem;
@@ -248,6 +255,7 @@ p {
 /* patient-dashboard */
 .patient-dashboard {
     margin-top: 100px;
+    margin-left: 250px;
 }
 
 .patient-btn-div {
@@ -265,6 +273,12 @@ p {
     color: white;
 }
 
+.header h2{
+   color: #007aa5;
+
+}
+
+
 /* modal */
 
 .modal-body {
@@ -275,6 +289,12 @@ p {
 
 .select {
     margin-left: 20px;
+}
+
+.table-row:hover{
+   background-color: #007aa5;
+   color: black;
+   font-weight: bold;
 }
 
 td,
@@ -327,6 +347,9 @@ th {
     border: none;
 }
 
+.delete-btn img{
+    height: 30px;
+}
 
 .doc-log-gridy .form-group input {
     border-radius: 20px;

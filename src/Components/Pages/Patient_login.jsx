@@ -107,7 +107,7 @@ export default function Patient_login() {
         </div>
 
         <div id="login-form">
-          <h1 className="heading">Healthcare</h1>
+          <h1 className="heading text-primary">Healthcare</h1>
           <p>Welcome back ! please login to your account</p>
           <form onSubmit={signinData}>
             <div className="container doc-log-gridy">

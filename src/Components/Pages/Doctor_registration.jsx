@@ -148,7 +148,7 @@ export default function Doctor_registration() {
                 <div className="row">
                   <div className="col-lg-10 col-xl-7 mx-auto">
                     <div className="card shadow-lg p-4 register-div">
-                      <h1 className="heading">Doctor Registration</h1>
+                      <h1 className="heading text-primary">Doctor Registration</h1>
                       <p className="message">Welcome ! please create your new account</p>
 
                       <form onSubmit={signupData}>

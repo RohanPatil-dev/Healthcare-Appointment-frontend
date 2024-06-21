@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 
 export default function Nav_dashboard() {
 
-    const [sidebar, setSidebar] = useState(false);
+    const [sidebar, setSidebar] = useState(true);
 
     const showSidebar = () => {return setSidebar(!sidebar)}
   

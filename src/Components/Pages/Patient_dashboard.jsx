@@ -140,7 +140,7 @@ export default function Patient_dashboard() {
 
           <div className="container patient-dashboard text-center">
             <table className="table table-bordered table-striped" style={{width : "65rem",marginLeft : "30px"}}>
-              <thead className="bg-dark text-light">
+              <thead className="text-light" style={{backgroundColor : "#6D6D6D"}}>
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Doctor Name</th>
@@ -158,7 +158,7 @@ export default function Patient_dashboard() {
                         <td>{getDocName(data.doctorId)}</td>
                         <td>{data.date}</td>
                         <td>{data.status}</td>
-                        <td><a className="btn delete-btn text-light" style={{ fontSize: "20px" }} onClick={() => { deleteAppointment(data._id) }}> <img src="./images/delete.png" alt="" />Delete</a></td>
+                        <td><a className="btn delete-btn" style={{ fontSize: "20px" }} onClick={() => { deleteAppointment(data._id) }}> <img src="./images/delete.png" alt="" />Delete</a></td>
                       </tr>
                     </>
                   )

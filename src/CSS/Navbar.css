@@ -146,7 +146,11 @@
     top: 10px;
     font-size: 20px;
     border-radius: 20px;
-    background-color: rgb(213, 102, 213);
+}
+
+.register-btn:hover{
+    background-color: white;
+    color: black;
 }
 
 .register-div{
@@ -160,8 +164,12 @@
     font-weight: bold;
     border-radius: 12px;
     color: white;
-    background-color: rgb(213, 102, 213);
     margin-bottom: 50px;
+}
+
+.doc-btn:hover{
+   background-color: white;
+   color: black;
 }
 
 .input{
@@ -279,11 +287,12 @@
 
 }
 
-.table-row:hover{
-    color: black;
-    font-weight: bold;
- }
- 
+.table-row td{
+
+    font-weight: none;
+
+}
+
  .table-body{
      overflow: auto;
      height: 200px;
@@ -308,12 +317,12 @@ th {
 }
 
 .action {
-    box-shadow: 0px 2px 8px 5px gray;
     font-size: 20px;
 }
 
 .action:hover{
-    background-color: rgb(29, 210, 29);
+    background-color: white;
+    color: black;
 }
 
 .heading {
@@ -386,7 +395,9 @@ th {
 }
 
 .delete-btn:hover{
-    background-color: rgb(227, 54, 88);
+    background-color: white;
+    color: black;
+    border: 1px solid black;
 }
 
 .delete-btn img{
@@ -398,12 +409,11 @@ th {
     border-radius: 20px;
     padding: 10px;
     padding-left: 70px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .doc-log-gridy .form-group input::placeholder {
-    font-size: 20px;
-    color: purple;
+    color: rgb(85, 85, 226);
 }
 
 
@@ -414,17 +424,15 @@ th {
   text-align: center;
   margin-top: 20px;
   font-size: 30px;
-  color: white;
-  font-style: italic;
   font-weight: 600;
-  text-shadow: 0px 0px 10px white;
+  color: white;
 }
 
 .sidebar {
   position: absolute;
   top: 89px;
   left: 0;
-  background : #00308F;
+  background : #6CB4EE;
   height: 91%;
   width: 0;
   transition: all 0.5s ease;
@@ -460,7 +468,7 @@ th {
 
 #pop_up {
   position: absolute;
-  right: 40px;
+  left: 280px;
   top: 20px;
 }
 
@@ -484,7 +492,7 @@ th {
   color: rgb(255, 255, 255);
   margin-left: 20px;
   margin-top: 10px;
-  font-weight: 600;
+  font-weight:400;
 }
 
 .icons {
@@ -505,7 +513,7 @@ th {
 }
 
 .nav_list li{
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .nav_list li:hover{

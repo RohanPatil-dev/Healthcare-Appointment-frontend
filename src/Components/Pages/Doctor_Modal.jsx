@@ -13,7 +13,7 @@ export default function Doctor_Modal(props) {
             <div className="modal fade" id="doctorModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
-                        <div className="modal-header" style={{ backgroundColor: "#00308F", color: "white" }}>
+                        <div className="modal-header" style={{ backgroundColor: "#6CB4EE", color: "white" }}>
                             <h3 className="modal-title" id="exampleModalLabel" style={{ marginLeft: "150px", fontWeight: "bold" }}>Patient Status</h3>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>

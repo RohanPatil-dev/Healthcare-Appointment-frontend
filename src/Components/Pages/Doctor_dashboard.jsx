@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect,useRef } from "react"
 
 import {ToastContainer,toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+
+// for data table
+import { Button, Input, Space, Table, Popconfirm } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+
+import Highlighter from 'react-highlight-words';
 
 import { useLocation } from "react-router-dom";
 
@@ -107,7 +113,176 @@ export default function Doctor_dashboard() {
         return patient ? patient.name : "Unknown Patient"
     }
 
+    
+  // data table code
 
+  const [searchText, setSearchText] = useState('');
+  const [searchedColumn, setSearchedColumn] = useState('');
+  const searchInput = useRef(null);
+
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    setSearchText(selectedKeys[0]);
+    setSearchedColumn(dataIndex);
+  };
+
+  const handleReset = (clearFilters) => {
+    clearFilters();
+    setSearchText('');
+  };
+
+  const getColumnSearchProps = (dataIndex) => ({
+    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+      <div
+        style={{
+          padding: 8,
+        }}
+        onKeyDown={(e) => e.stopPropagation()}
+      >
+        <Input
+          ref={searchInput}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{
+            marginBottom: 8,
+            display: 'block',
+          }}
+        />
+        <Space>
+          <Button
+            type="primary"
+            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            icon={<SearchOutlined />}
+            size="small"
+            style={{
+              width: 90,
+            }}
+          >
+            Search
+          </Button>
+          <Button
+            onClick={() => clearFilters && handleReset(clearFilters)}
+            size="small"
+            style={{
+              width: 90,
+            }}
+          >
+            Reset
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => {
+              confirm({
+                closeDropdown: false,
+              });
+              setSearchText(selectedKeys[0]);
+              setSearchedColumn(dataIndex);
+            }}
+          >
+            Filter
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => {
+              close();
+            }}
+          >
+            close
+          </Button>
+        </Space>
+      </div>
+    ),
+    filterIcon: (filtered) => (
+      <SearchOutlined
+        style={{
+          color: filtered ? '#1677ff' : undefined,
+        }}
+      />
+    ),
+    onFilter: (value, record) =>
+      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownOpenChange: (visible) => {
+      if (visible) {
+        setTimeout(() => searchInput.current?.select(), 100);
+      }
+    },
+    render: (text) =>
+      searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{
+            backgroundColor: '#ffc069',
+            padding: 0,
+          }}
+          searchWords={[searchText]}
+          autoEscape
+          textToHighlight={text ? text.toString() : ''}
+        />
+      ) : (
+        text
+      ),
+  });
+
+  const modifiedData = appointments.map(({ body, index, ...item }) => ({
+    ...item,
+    key: item.id,
+    comment: body
+  }))
+
+  console.log("modify", modifiedData);
+
+  // pagination purpose
+  const [currentPage, setcurrentPage] = useState(1)
+
+  let pageSize = 10
+
+  const columns = [
+    {
+      title: "ID",
+      key: "index",
+      render: (text, record, index) => (currentPage - 1) * pageSize + index + 1,
+      width: '10%',
+      align: "center",
+    }, {
+      title: "Doctor Name",
+      key: "doctor",
+      render: (text, record, index) => getPatientName(record.patientId),
+      width: '20%',
+      align: "center"
+    }, {
+      title: "Date",
+      dataIndex: "date",
+      key: "date",
+      ...getColumnSearchProps('date'),
+      width: '32%',
+      align: "center"
+    }, {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      ...getColumnSearchProps('status'),
+      width: '10%',
+      align: "center"
+    }, {
+      title: "Action",
+      dataIndex: "action",
+      key: "action",
+      render: (_, record) => <button className="btn btn-primary action" onClick={()=>{getDoctor(record)}} data-toggle="modal" data-target="#doctorModal">Change Status</button>,
+      width: '10%',
+      align: "center"
+    },{
+      title: "Doctor Profile",
+      dataIndex: "profile",
+      key: "profile",
+      render: (_, record) => <button className="btn btn-success" onClick={() => { }}>Patients profile</button>,
+      width: '10%',
+      align: "center"
+    }
+  ]
+    
     return (
         <>
     <ToastContainer/>
@@ -115,8 +290,23 @@ export default function Doctor_dashboard() {
             <Doctor_Modal users={users} updateStatus={updateStatus} status={status} setStatus={setStatus} />
 
             <Nav_dashboard />
-            <div className="container patient-dashboard text-center">
-                <table className="table table-bordered table-striped" style={{width : "60rem",marginLeft : "50px"}}>
+            <div className="container patient-dashboard text-center" style={{marginTop : "25px"}}>
+               
+            <Table
+              columns={columns}
+              dataSource={appointments}
+              rowKey={"_id"}
+              bordered
+              pagination = {
+                {
+                  // pageSize : pageSize,
+                  current : currentPage,
+                  onChange : (page) => setcurrentPage(page)
+                }
+              }
+            />
+               
+                {/* <table className="table table-bordered table-striped" style={{width : "60rem",marginLeft : "50px"}}>
                     <thead className="text-light" style={{backgroundColor : "#6D6D6D"}}>
                         <tr>
                             <th scope="col">ID</th>
@@ -143,7 +333,7 @@ export default function Doctor_dashboard() {
                         })}
 
                     </tbody>
-                </table>
+                </table> */}
             </div>
         </>
     )

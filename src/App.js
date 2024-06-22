@@ -1,35 +1,29 @@
 import React from 'react';
+// import With_react from './With_react';
 import Index from './Components/Index';
-// import Nav from './Axios tutorial/Nav';
+// import Practice from './Practice';
 
-// import { BrowserRouter,Routes,Route } from 'react-router-dom';
-// import Signup from './Axios tutorial/Signup';
-// import PrivateComponent from './Axios tutorial/PrivateComponent';
 
 function App() {
 return(
      <>
-     {/* <Registration /> */}
          <Index />
 
-{/* <BrowserRouter>
-<Nav />
-
-       <Routes>
-        <Route element={<PrivateComponent />}>
-            <Route path='/' element={<h1>Product component</h1>}/>
-            <Route path='/add' element={<h1>Add Product component</h1>}/>
-            <Route path='/update' element={<h1>Update Product component</h1>}/>
-            <Route path='/logout' element={<h1>logout Product component</h1>}/>
-            <Route path='/profile' element={<h1>profile Product component</h1>}/>
-        </Route>
-
-            <Route path='/signup' element={<Signup/>}/>
-       </Routes>
-</BrowserRouter> */}
-        
+         {/* <Practice /> */}
+{/* 
+         <With_react/> */}
     </>
   );
 }
 
 export default App;
+
+
+//  react data table
+// https://www.bing.com/videos/riverview/relatedvideo?q=how+to+add+data+tables+in+react&&view=riverview&mmscn=mtsc&mid=5933F25DDD66C6C29F355933F25DDD66C6C29F35&&aps=187&FORM=VMSOVR
+
+//  pagination
+// https://www.bing.com/videos/riverview/relatedvideo?&q=react+pagination+component&&mid=FCC45AFB8FAB3FA611E5FCC45AFB8FAB3FA611E5&mmscn=mtsc&aps=61&FORM=VRDGAR
+
+// datatable project
+//https://www.bing.com/videos/riverview/relatedvideo?&q=bootstrap+5+datatable&&mid=1E3DD9F7FF02438D415A1E3DD9F7FF02438D415A&&FORM=VRDGAR

@@ -5,13 +5,13 @@
 }
 
 
-.navbar{
+.navbar {
     font-size: 20px;
     box-shadow: 0px 6px 15px 0px rgb(234, 229, 229);
     font-weight: 600;
 }
 
-.Logo_name{
+.Logo_name {
     font-size: 25px;
 }
 
@@ -44,7 +44,7 @@
     width: 510px;
 }
 
-#register-doc-img img{
+#register-doc-img img {
     position: relative;
     bottom: 20px;
     height: 650px;
@@ -115,7 +115,8 @@
 }
 
 
-.doc-gridy .form-group select,.doc-gridy .form-group input {
+.doc-gridy .form-group select,
+.doc-gridy .form-group input {
     border-radius: 20px;
 }
 
@@ -134,12 +135,12 @@
     margin-left: 180px;
 }
 
-.register-image{
-    height : 44.9rem;
+.register-image {
+    height: 44.9rem;
     width: 45rem;
 }
 
-.register-btn{
+.register-btn {
     position: relative;
     left: 100px;
     width: 400px;
@@ -148,12 +149,12 @@
     border-radius: 20px;
 }
 
-.register-btn:hover{
+.register-btn:hover {
     background-color: white;
     color: black;
 }
 
-.register-div{
+.register-div {
     box-shadow: 0px 0px 4px 3px rgb(234, 229, 229);
 }
 
@@ -167,12 +168,12 @@
     margin-bottom: 50px;
 }
 
-.doc-btn:hover{
-   background-color: white;
-   color: black;
+.doc-btn:hover {
+    background-color: white;
+    color: black;
 }
 
-.input{
+.input {
     border-radius: 20px;
     padding: 8px;
     padding-left: 70px;
@@ -180,7 +181,7 @@
 }
 
 
-.input::placeholder{
+.input::placeholder {
     color: purple;
     font-size: 15px;
 }
@@ -202,7 +203,7 @@
 
 .doc-log-gridy {
     margin-left: 70px;
-   
+
 }
 
 .doc-log-gridy .form-group input {
@@ -253,7 +254,7 @@
     color: gray;
 }
 
-.message{
+.message {
     position: relative;
     bottom: 20px;
     color: gray;
@@ -264,12 +265,13 @@
 /* patient-dashboard */
 .patient-dashboard {
     margin-top: 100px;
-    margin-left: 250px;
+    margin-left: 200px;
+    z-index: -1;
 }
 
 .patient-btn-div {
     position: relative;
-    top: 60px;
+    top: 20px;
     left: 280px;
 }
 
@@ -282,21 +284,21 @@
     color: white;
 }
 
-.header h2{
-   color: #007aa5;
+.header h2 {
+    color: #007aa5;
 
 }
 
-.table-row td{
+.table-row td {
 
     font-weight: none;
 
 }
 
- .table-body{
-     overflow: auto;
-     height: 200px;
- }
+.table-body {
+    overflow: auto;
+    height: 200px;
+}
 
 
 /* modal */
@@ -320,7 +322,7 @@ th {
     font-size: 20px;
 }
 
-.action:hover{
+.action:hover {
     background-color: white;
     color: black;
 }
@@ -330,24 +332,24 @@ th {
     margin-bottom: 30px;
     font-size: 40px;
     font-weight: bold;
-    color:rgb(48, 68, 215);
+    color: rgb(48, 68, 215);
 }
 
 #email {
     position: relative;
     height: 25px;
     top: 35px;
-    left : 20px;
+    left: 20px;
 }
 
 #password {
     position: relative;
     height: 25px;
     top: 35px;
-    left : 20px;
+    left: 20px;
 }
 
-#date-modal{
+#date-modal {
     position: relative;
     right: 20px;
     border: 1px solid gray;
@@ -355,24 +357,24 @@ th {
     border-radius: 5px;
 }
 
-#date-modal:hover{
-    outline : 1px solid skyblue;
+#date-modal:hover {
+    outline: 1px solid skyblue;
 }
 
-.footer-modal button{
+.footer-modal button {
     position: relative;
     left: 85px;
 }
 
-.close-modal{
+.close-modal {
     width: 100px;
 }
 
-.doctor-modal option:hover{
-   background-color: red;
+.doctor-modal option:hover {
+    background-color: red;
 }
 
-.text{
+.text {
     position: relative;
     top: 3px;
 }
@@ -394,13 +396,13 @@ th {
     font-weight: bold;
 }
 
-.delete-btn:hover{
+.delete-btn:hover {
     background-color: white;
     color: black;
     border: 1px solid black;
 }
 
-.delete-btn img{
+.delete-btn img {
     height: 30px;
     margin-right: 10px;
 }
@@ -421,102 +423,119 @@ th {
 /* sidebar */
 
 #dashboard_name {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 30px;
-  font-weight: 600;
-  color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
 }
 
 .sidebar {
-  position: absolute;
-  top: 89px;
-  left: 0;
-  background : #6CB4EE;
-  height: 91%;
-  width: 0;
-  transition: all 0.5s ease;
+    position: absolute;
+    top: 89px;
+    left: 0;
+    background: #6CB4EE;
+    height: 91%;
+    width: 0;
+    transition: all 0.5s ease;
 }
 
 .sidebar-setting {
-  height: 95%;
+    height: 95%;
 }
 
 .sidebar-write_appointment {
-  height: 92%;
+    height: 92%;
 }
 
 .sidebar.active {
-  width: 250px;
+    width: 250px;
 }
 
 .sidebar .logo_content .logo {
-  color: #fff;
-  display: flex;
-  height: 50px;
-  width: 100%;
-  align-items: center;
+    color: #fff;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
 }
 
 .logo_content {
-  display: none;
+    display: none;
 }
 
 .sidebar.active .logo_content {
-  display: inline-block;
+    display: inline-block;
 }
 
 #pop_up {
-  position: absolute;
-  left: 280px;
-  top: 20px;
+    position: absolute;
+    left: 280px;
+    top: 20px;
 }
 
 .sidebar ul {
-  margin-top: 130px;
-  list-style-type: none;
-  display: none;
-  opacity: 0;
+    margin-top: 130px;
+    list-style-type: none;
+    display: none;
+    opacity: 0;
 }
 
 .sidebar.active ul {
-  display: inline-block;
-  opacity: 1;
+    display: inline-block;
+    opacity: 1;
 }
 
 .sidebar ul li a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  font-size: 25px;
-  color: rgb(255, 255, 255);
-  margin-left: 20px;
-  margin-top: 10px;
-  font-weight:400;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    margin-left: 20px;
+    margin-top: 10px;
+    font-weight: 400;
 }
 
 .icons {
-  height: 30px;
-  margin-right: 20px;
+    height: 30px;
+    margin-right: 20px;
 }
 
 
-.user-info{
+.user-info {
     font-size: 20px;
     padding: 6px;
 }
 
-.nav_list{
+.nav_list {
     margin-left: 20px;
     position: relative;
     bottom: 100px;
 }
 
-.nav_list li{
+.nav_list li {
     font-weight: 600;
 }
 
-.nav_list li:hover{
+.nav_list li:hover {
     transform: scale(1.1);
 }
 
+/* antd data table */
+
+table {
+    table-layout: none; 
+}
+
+.patient-dashboard .ant-table {
+    border: 0.5px solid rgb(138, 133, 133);
+}
+
+.patient-dashboard .ant-table-thead>tr>th {
+    border: 0.5px solid rgb(138, 133, 133);
+}
+
+.patient-dashboard .ant-table-tbody>tr>td {
+    border: 0.5px solid rgb(138, 133, 133);
+}

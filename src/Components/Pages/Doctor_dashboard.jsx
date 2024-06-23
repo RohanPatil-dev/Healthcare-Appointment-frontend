@@ -244,41 +244,46 @@ export default function Doctor_dashboard() {
       title: "ID",
       key: "index",
       render: (text, record, index) => (currentPage - 1) * pageSize + index + 1,
-      width: '10%',
+      width: '0.3%',
       align: "center",
+      
     }, {
       title: "Doctor Name",
       key: "doctor",
       render: (text, record, index) => getPatientName(record.patientId),
-      width: '20%',
-      align: "center"
+      width: '0.8%',
+      align: "center",
+ 
     }, {
       title: "Date",
       dataIndex: "date",
       key: "date",
       ...getColumnSearchProps('date'),
-      width: '32%',
-      align: "center"
+      width: '0.9%',
+      align: "center",
+ 
     }, {
       title: "Status",
       dataIndex: "status",
       key: "status",
       ...getColumnSearchProps('status'),
-      width: '10%',
-      align: "center"
+      width: '0.4%',
+      align: "center",
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.status > b.status,
     }, {
       title: "Action",
       dataIndex: "action",
       key: "action",
       render: (_, record) => <button className="btn btn-primary action" onClick={()=>{getDoctor(record)}} data-toggle="modal" data-target="#doctorModal">Change Status</button>,
-      width: '10%',
+      width: '0.5%',
       align: "center"
     },{
       title: "Doctor Profile",
       dataIndex: "profile",
       key: "profile",
       render: (_, record) => <button className="btn btn-success" onClick={() => { }}>Patients profile</button>,
-      width: '10%',
+      width: '0.6%',
       align: "center"
     }
   ]
@@ -290,7 +295,7 @@ export default function Doctor_dashboard() {
             <Doctor_Modal users={users} updateStatus={updateStatus} status={status} setStatus={setStatus} />
 
             <Nav_dashboard />
-            <div className="container patient-dashboard text-center" style={{marginTop : "25px"}}>
+            <div className="patient-dashboard text-center" style={{marginTop : "25px"}}>
                
             <Table
               columns={columns}
@@ -304,6 +309,7 @@ export default function Doctor_dashboard() {
                   onChange : (page) => setcurrentPage(page)
                 }
               }
+              scroll={{y : 500}}
             />
                
                 {/* <table className="table table-bordered table-striped" style={{width : "60rem",marginLeft : "50px"}}>

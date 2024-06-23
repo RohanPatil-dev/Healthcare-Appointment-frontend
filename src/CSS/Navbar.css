@@ -264,14 +264,14 @@
 
 /* patient-dashboard */
 .patient-dashboard {
-    margin-top: 100px;
-    margin-left: 250px;
+    margin-top: 40px;
+    /* margin-left: 250px; */
 }
 
 .patient-btn-div {
     position: relative;
     top: 20px;
-    left: 280px;
+    left: 100px;
 }
 
 .patient-btn {
@@ -427,6 +427,7 @@ th {
     font-size: 30px;
     font-weight: 600;
     color: white;
+    z-index: 2;
 }
 
 .sidebar {
@@ -436,19 +437,19 @@ th {
     background: #6CB4EE;
     height: 91%;
     width: 0;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease;    z-index: 2;
 }
 
 .sidebar-setting {
-    height: 95%;
+    height: 95%;    z-index: 2;
 }
 
 .sidebar-write_appointment {
-    height: 92%;
+    height: 92%;    z-index: 2;
 }
 
 .sidebar.active {
-    width: 250px;
+    width: 250px;    z-index: 2;
 }
 
 .sidebar .logo_content .logo {
@@ -456,7 +457,7 @@ th {
     display: flex;
     height: 50px;
     width: 100%;
-    align-items: center;
+    align-items: center;    z-index: 2;
 }
 
 .logo_content {
@@ -523,12 +524,12 @@ th {
 
 /* antd data table */
 
-table {
-    table-layout: none; 
-}
 
 .patient-dashboard .ant-table {
     border: 0.5px solid rgb(138, 133, 133);
+    table-layout: none; 
+    margin-left: 50px;
+    width: 92%;
 }
 
 .patient-dashboard .ant-table-thead>tr>th {
@@ -538,3 +539,4 @@ table {
 .patient-dashboard .ant-table-tbody>tr>td {
     border: 0.5px solid rgb(138, 133, 133);
 }
+

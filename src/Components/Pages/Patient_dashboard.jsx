@@ -258,42 +258,43 @@ export default function Patient_dashboard() {
     {
       title: "ID",
       key: "index",
+      dataIndex : "index",
       render: (text, record, index) => (currentPage - 1) * pageSize + index + 1,
-      width: '10%',
+      width: '0.3%',
       align: "center",
     }, {
       title: "Doctor Name",
       key: "doctor",
       render: (text, record, index) => getDocName(record.doctorId),
-      width: '20%',
-      align: "center"
+      width: '0.8%',
+      align: "center",
     }, {
       title: "Date",
       dataIndex: "date",
       key: "date",
       ...getColumnSearchProps('date'),
-      width: '28%',
-      align: "center"
+      width: '1.2%',
+      align: "center",
     }, {
       title: "Status",
       dataIndex: "status",
       key: "status",
       ...getColumnSearchProps('status'),
-      width: '10%',
-      align: "center"
+      width: '0.6%',
+      align: "center",
     }, {
       title: "Action",
       dataIndex: "action",
       key: "action",
-      render: (_, record) => <button className="btn btn-danger" onClick={() => { deleteAppointment(record._id) }}>Delete</button>,
-      width: '10%',
+      render: (_, record) => <button className="btn btn-danger w-50" onClick={() => { deleteAppointment(record._id) }}>Delete</button>,
+      width: '0.8%',
       align: "center"
     },{
       title: "Doctor Profile",
       dataIndex: "profile",
       key: "profile",
       render: (_, record) => <button className="btn btn-success" onClick={() => { deleteAppointment(record._id) }}>Doctors profile</button>,
-      width: '10%',
+      width: '0.6%',
       align: "center"
     }
   ]
@@ -313,7 +314,7 @@ export default function Patient_dashboard() {
             <button className="btn patient-btn" data-toggle="modal" data-target="#exampleModal">Add Appointment</button>
           </div>
 
-          <div className="container patient-dashboard text-center">
+          <div className="patient-dashboard text-center">
             <Table
               columns={columns}
               dataSource={appointment}
@@ -326,6 +327,7 @@ export default function Patient_dashboard() {
                   onChange : (page) => setcurrentPage(page)
                 }
               }
+              scroll={{y : 500}}
             />
 
             {/* <table className="table table-bordered table-striped" style={{width : "65rem",marginLeft : "30px"}}>

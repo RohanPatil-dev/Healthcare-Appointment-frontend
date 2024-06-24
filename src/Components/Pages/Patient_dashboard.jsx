@@ -314,7 +314,7 @@ export default function Patient_dashboard() {
             <button className="btn patient-btn" data-toggle="modal" data-target="#exampleModal">Add Appointment</button>
           </div>
 
-          <div className="patient-dashboard text-center">
+          <div className="mt-5 text-center">
             <Table
               columns={columns}
               dataSource={appointment}

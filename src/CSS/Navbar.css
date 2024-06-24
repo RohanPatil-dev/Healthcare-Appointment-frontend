@@ -540,3 +540,87 @@ th {
     border: 0.5px solid rgb(138, 133, 133);
 }
 
+
+/* doctor profile */
+
+.profile-main-div{
+    height: 50rem;
+    background: linear-gradient(to left, rgb(201, 66, 88),rgb(216, 156, 121));
+}
+
+.profile-grid{
+    position: relative;
+    top: 50px;
+    left: 180px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height: 600px;
+}
+
+.profile-img{
+    border-radius: 20px;
+    border: 10px double purple;
+    background-color: white;
+    width: 35rem;
+}
+
+.profile-img img{
+    height: 400px;
+    position: relative;
+    left: 70px;
+    top: 70px;
+}
+
+.profile-description{
+    border-radius: 20px;
+
+    background-color: #555555;
+    width: 35rem;
+}
+
+.description-container{
+
+    width: 500px;
+    padding: 50px;
+}
+
+.description-heading,.hospital-speciality{
+    color : rgb(211, 63, 88);
+    font-weight:500;
+  font-size: 20px;
+}
+
+.doctor-name{
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+.doctor-studies,.hospital-address{
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+}
+
+.speciality-name{
+    color: white;
+    /* border: 2px solid white; */
+    padding-top: 7px;
+    padding-bottom: 8px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-weight: 500;
+    border-radius: 20px;
+    background-color: #353839;
+    text-align: center;
+    font-size: 15px;
+}
+
+.hospital-experience{
+    position: relative;
+    bottom: 18px;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+}

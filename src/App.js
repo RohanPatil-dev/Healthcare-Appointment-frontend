@@ -1,6 +1,7 @@
 import React from 'react';
 // import With_react from './With_react';
 import Index from './Components/Index';
+import Doctor_profile from './Doctor_profile';
 // import Practice from './Practice';
 
 
@@ -9,9 +10,7 @@ return(
      <>
          <Index />
 
-         {/* <Practice /> */}
-{/* 
-         <With_react/> */}
+         {/* <Doctor_profile/> */}
     </>
   );
 }

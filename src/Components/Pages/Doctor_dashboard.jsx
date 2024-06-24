@@ -295,7 +295,7 @@ export default function Doctor_dashboard() {
             <Doctor_Modal users={users} updateStatus={updateStatus} status={status} setStatus={setStatus} />
 
             <Nav_dashboard />
-            <div className="patient-dashboard text-center" style={{marginTop : "25px"}}>
+            <div className="mt-5 text-center" style={{marginTop : "25px"}}>
                
             <Table
               columns={columns}

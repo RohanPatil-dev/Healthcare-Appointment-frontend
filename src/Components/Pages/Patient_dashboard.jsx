@@ -84,8 +84,14 @@ export default function Patient_dashboard() {
       })
       
       if(response === true){
-        alert(response.data.error)
+        toast.error(response.data.error)
        
+      }else if(!doctorId && !date){
+        toast.error("Please select your appointment !")
+      }else if(!date){
+        toast.error("Please select date !")
+      }else if(!doctorId){
+        toast.error("Please select doctor !")
       }else{
         toast.success("Success !")
         addAppointment()

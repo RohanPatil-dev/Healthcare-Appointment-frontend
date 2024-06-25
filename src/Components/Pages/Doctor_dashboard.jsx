@@ -36,20 +36,23 @@ export default function Doctor_dashboard() {
 
     const [selectedAppointment,setSelectedAppointment] = useState([])
 
-    const local = JSON.parse(localStorage.getItem("uid"))
+    const local = localStorage.getItem("doctorId")
 
-    console.log("local", local._id);
+    console.log("local", local);
 
     useEffect(() => {
         allData()
         allPatients()
-    }, [local._id])
+    }, [local])
 
 
     function allData() {
+      const token = localStorage.getItem('token');
         // http://localhost:8081/appointment/appointmentsByPatient?patientId=6666c50eaa856f76ffcdae19
         axios
-            .get(`http://localhost:8081/appointment/appointmentsByDoctor?doctorId=${local._id}`)
+            .get(`http://localhost:8081/appointment/appointmentsByDoctor?doctorId=${local}`, {
+              headers: { Authorization: `Bearer ${token}` },
+            })
             .then((response) => {
                 setAppointments(response.data.task);
             }).catch(err => console.log(err))
@@ -83,6 +86,7 @@ export default function Doctor_dashboard() {
 
 
     function updateStatus() {
+      const token = localStorage.getItem('token');
 
         if(status === undefined){
             toast.error("Choose your status !")
@@ -91,7 +95,9 @@ export default function Doctor_dashboard() {
             toast.success("Status updated successfully !")
             // alert("Status updated successfully !")
 
-            const result = axios.put(`http://localhost:8081/appointment/userAppointmentUpdate/${selectedAppointment._id}`, { status }).then((value)=>{
+            const result = axios.put(`http://localhost:8081/appointment/userAppointmentUpdate/${selectedAppointment._id}`, { status }, {
+              headers: { Authorization: `Bearer ${token}` },
+            }).then((value)=>{
                 
                 console.log("result",value.data);
                 console.log("res",result.data);

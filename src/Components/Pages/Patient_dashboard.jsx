@@ -39,20 +39,23 @@ export default function Patient_dashboard() {
 
   // const patient = useLocation().state?.id
 
-  const local = JSON.parse(localStorage.getItem("uid"))
+  const local = localStorage.getItem("patientId")
 
-  console.log("local", local._id);
+  console.log("local", local);
 
   useEffect(() => {
     addAppointment()
     addDoctors()
-  }, [local._id])
+  }, [local])
 
 
   function addAppointment() {
+    const token = localStorage.getItem('token');
     // http://localhost:8081/appointment/appointmentsByPatient?patientId=6666c50eaa856f76ffcdae19
     axios
-      .get(`http://localhost:8081/appointment/appointmentsByPatient?patientId=${local._id}`)
+      .get(`http://localhost:8081/appointment/appointmentsByPatient?patientId=${local}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
         setAppointment(response.data.task);
       }).catch(err => console.log(err))
@@ -78,34 +81,55 @@ export default function Patient_dashboard() {
     })
   }
 
-  function postAppointment() {
-    const data = {
-      patientId: local._id,
-      doctorId: doctorId,
-      date: date,
-      status: "pending"
-    }
+  async function postAppointment() {
+    
+    try {
+      const token = localStorage.getItem('token');
 
-    if (doctorId === "") {
-      toast.error("Select your doctor !")
-      //  alert("Select your doctor !")
-    } else if (date === "") {
-      toast.error("Select your appointment Date !")
-      // alert("Select your appointment Date !")
-    } else {
-      toast.success("Appointment added successfully !")
-      // alert("success !")
+      const data = {
+        patientId: local,
+        doctorId: doctorId,
+        date: date,
+        status: "pending"
+      }
 
-      axios.post("http://localhost:8081/appointment/userAppointment", data).then((data) => {
-        console.log(data);
-        console.log("success");
-        addAppointment()
-      }).catch((err) => {
-        console.log(err);
-        console.log("err");
+      const response = await axios.post("http://localhost:8081/appointment/userAppointment", data,{
+        headers : { Authorization: `Bearer ${token}` }
       })
-
+      
+      if(response === true){
+        alert(response.data.error)
+       
+      }else{
+        alert(response.data)
+        addAppointment()
+      }
+      
+      // .then((data) => {
+      //   console.log(data);
+      //   console.log("success");
+      //   addAppointment()
+      // }).catch((err) => {
+      //   console.log(err);
+      //   console.log("err");
+      // })
+    } catch (error) {
+      
     }
+ 
+    // if (doctorId === "") {
+    //   toast.error("Select your doctor !")
+    //   //  alert("Select your doctor !")
+    // } else if (date === "") {
+    //   toast.error("Select your appointment Date !")
+    //   // alert("Select your appointment Date !")
+    // } else {
+    //   toast.success("Appointment added successfully !")
+    //   // alert("success !")
+
+   
+
+    // }
   }
 
   function deleteAppointment(id) {
@@ -113,7 +137,11 @@ export default function Patient_dashboard() {
     toast.success("Appointment deleted successfully !")
     // alert("Appointment deleted successfully !")
 
-    axios.delete(`http://localhost:8081/appointment/userAppointmentDelete/${id}`).then((value) => {
+    const token = localStorage.getItem("token")
+
+    axios.delete(`http://localhost:8081/appointment/userAppointmentDelete/${id}`,{
+      headers : { Authorization: `Bearer ${token}` }
+    }).then(() => {
       console.log(`${id} : data deleted successfully`);
       addAppointment()
     }).catch((err) => {

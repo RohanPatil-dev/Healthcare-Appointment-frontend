@@ -14,11 +14,11 @@ export default function Doctor_signin() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const [doctor, setDoctors] = useState([])
+  // const [doctor, setDoctors] = useState([])
 
-  useEffect(() => {
-    addDoctors()
-  })
+  // useEffect(() => {
+  //   addDoctors()
+  // })
 
   const data = {
     email: email,
@@ -29,40 +29,48 @@ export default function Doctor_signin() {
 
     event.preventDefault()
 
-    if (!data.email && !data.password) {
-      toast.error("Form is empty !")
-      // alert("Form is empty !")
-    } else if (!data.email) {
-      toast.error("Please insert your email !")
-      //  alert("Please insert your email !")
-    } else if (!data.password) {
-      toast.error("Please insert your password !")
-      //  alert("Please insert your password !")
-    }
-    else if (data.password.length > 8) {
-      toast.error("You are entering password over 8 characters !")
-      //  alert("You are entering password over 8 characters !");
-    } else if (data.password.length < 8) {
-      toast.error("You are entering password under 8 characters !")
-      //  alert("You are entering password under 8 characters !");
-    }
-    else {
+    // if (!data.email && !data.password) {
+    //   toast.error("Form is empty !")
+    //   // alert("Form is empty !")
+    // } else if (!data.email) {
+    //   toast.error("Please insert your email !")
+    //   //  alert("Please insert your email !")
+    // } else if (!data.password) {
+    //   toast.error("Please insert your password !")
+    //   //  alert("Please insert your password !")
+    // }
+    // else if (data.password.length > 8) {
+    //   toast.error("You are entering password over 8 characters !")
+    //   //  alert("You are entering password over 8 characters !");
+    // } else if (data.password.length < 8) {
+    //   toast.error("You are entering password under 8 characters !")
+    //   //  alert("You are entering password under 8 characters !");
+    // }
+    // else {
 
       const result = await axios.post("http://localhost:8081/doctor/docLogin", data)
 
-      let condition = doctor.find((value) => value.email === result.data.email)
-
-      console.log("condition", condition);
-
-      if (!condition) {
-        toast.error(`${result.data.error}`)
-      } else {
-        toast.success("success !")
-
-        localStorage.setItem("uid", JSON.stringify(result.data))
-
+      if(result.data.success){
+        localStorage.setItem("token",result.data.token)
+        localStorage.setItem("doctorId", result.data.doctorId)
+        localStorage.setItem("userData", JSON.stringify(result.data.datas))
         navigate("/doctor-dashboard")
+      }else{
+        toast.error("Error")
       }
+      // let condition = doctor.find((value) => value.email === result.data.email)
+
+      // console.log("condition", condition);
+
+      // if (!condition) {
+      //   toast.error(`${result.data.error}`)
+      // } else {
+        // toast.success("success !")
+
+        // localStorage.setItem("uid", JSON.stringify(result.data))
+
+        // navigate("/doctor-dashboard")
+      // }
 
       // alert("success !")
     }
@@ -75,17 +83,17 @@ export default function Doctor_signin() {
     //                         if(result) {
     //                                  navigate("/doctor-dashboard")
     //                          }
-  }
+  // }
 
 
-  function addDoctors() {
-    axios.get(`http://localhost:8081/doctor/docData`).then((value) => {
-      console.log("doctor", value.data);
-      return setDoctors(value.data)
-    }).catch((err) => {
-      return err
-    })
-  }
+  // function addDoctors() {
+  //   axios.get(`http://localhost:8081/doctor/docData`).then((value) => {
+  //     console.log("doctor", value.data);
+  //     return setDoctors(value.data)
+  //   }).catch((err) => {
+  //     return err
+  //   })
+  // }
 
   return (
     <>

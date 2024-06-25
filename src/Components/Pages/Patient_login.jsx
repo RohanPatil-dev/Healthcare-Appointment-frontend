@@ -40,46 +40,55 @@ export default function Patient_login() {
 
     event.preventDefault()
 
-    if (!data.email && !data.password) {
-      toast.error("Form is empty !")
-      //  alert("Form is empty !")
-    } else if (!data.email) {
-      toast.error("Please insert your email !")
-      // alert("Please insert your email !")
-    } else if (!data.password) {
-      toast.error("Please insert your password !")
-      // alert("Please insert your password !")
-    }
-    else if (data.password.length > 8) {
-      toast.error("You are entering password characters over 8 characters !")
-      // alert("You are entering password characters over 8 characters !");
-    } else if (data.password.length < 8) {
-      toast.error("You are entering password characters under 8 characters !")
-      // alert("You are entering password characters under 8 characters !");
-    }
-    else {
+    // if (!data.email && !data.password) {
+    //   toast.error("Form is empty !")
+    //   //  alert("Form is empty !")
+    // } else if (!data.email) {
+    //   toast.error("Please insert your email !")
+    //   // alert("Please insert your email !")
+    // } else if (!data.password) {
+    //   toast.error("Please insert your password !")
+    //   // alert("Please insert your password !")
+    // }
+    // else if (data.password.length > 8) {
+    //   toast.error("You are entering password characters over 8 characters !")
+    //   // alert("You are entering password characters over 8 characters !");
+    // } else if (data.password.length < 8) {
+    //   toast.error("You are entering password characters under 8 characters !")
+    //   // alert("You are entering password characters under 8 characters !");
+    // }
+    // else {
       const result = await axios.post("http://localhost:8081/user/login", data)
 
-      let condition = users.find((value) => value.email === result.data.email)
+      if(result.data.success){
+        localStorage.setItem("token",result.data.token)
+        localStorage.setItem("patientId", result.data.patientId)
+        localStorage.setItem("userData", JSON.stringify(result.data.datas))
+        navigate("/patient-dashboard")
+      }else{
+        toast.error("Error")
+      }
 
-      console.log("condition", condition);
+      // let condition = users.find((value) => value.email === result.data.email)
+
+      // console.log("condition", condition);
 
       // alert("success !")
 
       // const result = await axios.post("http://localhost:8081/user/login", data)
 
-      if (!condition) {
-        toast.error(`${result.data.msg}`)
-      } else {
-        toast.success("success !")
+    //   if (!condition) {
+    //     toast.error(`${result.data.msg}`)
+    //   } else {
+    //     toast.success("success !")
 
-        localStorage.setItem("uid", JSON.stringify(result.data))
+    //     localStorage.setItem("uid", JSON.stringify(result.data))
 
-        navigate("/patient-dashboard")
+    //     navigate("/patient-dashboard")
 
-      }
+    //   }
 
-    }
+    // }
 
 
     // .then(data => 

@@ -8,15 +8,13 @@ export default function Sidebar(props) {
 
     const navigate = useNavigate()
 
-    const auth = localStorage.getItem("uid")
-
     const logout = () => {
-        localStorage.removeItem("uid")
+        localStorage.clear()
 
         navigate("/")
     }
 
-    const local = JSON.parse(localStorage.getItem("uid"))
+    const local = JSON.parse(localStorage.getItem("userData"))
 
     return (
         <>

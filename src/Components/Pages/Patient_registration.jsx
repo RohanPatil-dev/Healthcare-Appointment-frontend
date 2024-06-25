@@ -109,20 +109,6 @@ export default function Patient_registration() {
                 navigate("/")
             }
 
-            // alert("Success !")
-
-
-            // .then(data => {
-            //     // localStorage.setItem("uid",JSON.stringify(data.data)),
-            //     console.log(data)
-            // }).catch((err) => {
-            //     console.log(err);
-            // })
-
-            // if (result) {
-            //     navigate("/")
-            // }
-
         }
     }
 

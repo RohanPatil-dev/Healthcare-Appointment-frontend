@@ -48,7 +48,7 @@ export default function Doctor_dashboard() {
 
     function allData() {
       const token = localStorage.getItem('token');
-        // http://localhost:8081/appointment/appointmentsByPatient?patientId=6666c50eaa856f76ffcdae19
+
         axios
             .get(`http://localhost:8081/appointment/appointmentsByDoctor?doctorId=${local}`, {
               headers: { Authorization: `Bearer ${token}` },
@@ -57,16 +57,6 @@ export default function Doctor_dashboard() {
                 setAppointments(response.data.task);
             }).catch(err => console.log(err))
     }
-
-
-    // function allData() {
-    //     axios.get("http://localhost:8081/appointment/userAppointment", { params: { doctor: id } }).then((value) => {
-    //         setAppointments(value.data)
-    //     }).catch((err) => {
-    //         console.log(err);
-    //     })
-    // }
-
 
     function allPatients() {
         axios.get("http://localhost:8081/user/allPatient").then((value) => {
@@ -90,10 +80,8 @@ export default function Doctor_dashboard() {
 
         if(status === undefined){
             toast.error("Choose your status !")
-        //    alert("Choose your status !")
         }else{
             toast.success("Status updated successfully !")
-            // alert("Status updated successfully !")
 
             const result = axios.put(`http://localhost:8081/appointment/userAppointmentUpdate/${selectedAppointment._id}`, { status }, {
               headers: { Authorization: `Bearer ${token}` },

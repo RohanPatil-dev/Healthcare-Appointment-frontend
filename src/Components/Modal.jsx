@@ -36,11 +36,6 @@ export default function Modal(props) {
                       </>
                     )
                   })}
-                  {/*                  
-                  <Option value="">Doc 2</Option>
-                  <Option value="">Doc 3</Option>
-                  <Option value="">Doc 4</Option>
-                  <Option value="">Doc 5</Option> */}
                 </Select>
               </div>
 

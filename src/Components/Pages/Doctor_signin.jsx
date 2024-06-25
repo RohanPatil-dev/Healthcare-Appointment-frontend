@@ -14,12 +14,6 @@ export default function Doctor_signin() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  // const [doctor, setDoctors] = useState([])
-
-  // useEffect(() => {
-  //   addDoctors()
-  // })
-
   const data = {
     email: email,
     password: password
@@ -29,25 +23,20 @@ export default function Doctor_signin() {
 
     event.preventDefault()
 
-    // if (!data.email && !data.password) {
-    //   toast.error("Form is empty !")
-    //   // alert("Form is empty !")
-    // } else if (!data.email) {
-    //   toast.error("Please insert your email !")
-    //   //  alert("Please insert your email !")
-    // } else if (!data.password) {
-    //   toast.error("Please insert your password !")
-    //   //  alert("Please insert your password !")
-    // }
-    // else if (data.password.length > 8) {
-    //   toast.error("You are entering password over 8 characters !")
-    //   //  alert("You are entering password over 8 characters !");
-    // } else if (data.password.length < 8) {
-    //   toast.error("You are entering password under 8 characters !")
-    //   //  alert("You are entering password under 8 characters !");
-    // }
-    // else {
-
+    if (!data.email && !data.password) {
+      toast.error("Form is empty !")
+    } else if (!data.email) {
+      toast.error("Please insert your email !")
+    } else if (!data.password) {
+      toast.error("Please insert your password !")
+    }
+    else if (data.password.length > 8) {
+      toast.error("You are entering password characters over 8 characters !")
+    } else if (data.password.length < 8) {
+      toast.error("You are entering password characters under 8 characters !")
+    }
+    else {
+    
       const result = await axios.post("http://localhost:8081/doctor/docLogin", data)
 
       if(result.data.success){
@@ -56,45 +45,11 @@ export default function Doctor_signin() {
         localStorage.setItem("userData", JSON.stringify(result.data.datas))
         navigate("/doctor-dashboard")
       }else{
-        toast.error("Error")
+        toast.error("Email or Password is invalid !")
       }
-      // let condition = doctor.find((value) => value.email === result.data.email)
-
-      // console.log("condition", condition);
-
-      // if (!condition) {
-      //   toast.error(`${result.data.error}`)
-      // } else {
-        // toast.success("success !")
-
-        // localStorage.setItem("uid", JSON.stringify(result.data))
-
-        // navigate("/doctor-dashboard")
-      // }
-
-      // alert("success !")
     }
-    // .then(data => 
-    //                                       { localStorage.setItem("uid",JSON.stringify(data.data.msg))          
-    //                                       }).catch((err) => {
-    //                                          console.log(err);
-    //                                        })
-
-    //                         if(result) {
-    //                                  navigate("/doctor-dashboard")
-    //                          }
-  // }
-
-
-  // function addDoctors() {
-  //   axios.get(`http://localhost:8081/doctor/docData`).then((value) => {
-  //     console.log("doctor", value.data);
-  //     return setDoctors(value.data)
-  //   }).catch((err) => {
-  //     return err
-  //   })
-  // }
-
+  }
+   
   return (
     <>
 
